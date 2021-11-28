@@ -1,0 +1,58 @@
+#sentence {
+	width: $large;
+	margin: 0 auto;
+}
+
+.sentence-title {
+	$height: 200px;
+
+	@extend %flex-center;
+
+	height: $height;
+	margin-bottom: 40px;
+
+	h1 {
+		font-size: 1.6rem;
+		position: relative;
+		margin: 0;
+
+		&::before {
+			content: '“';
+			position: absolute;
+			top: 0;
+			left: -1em;
+			font-size: 1.2rem;
+		}
+
+		&::after {
+			content: '”';
+			position: absolute;
+			top: 0;
+			right: -1em;
+			font-size: 1.2rem;
+		}
+	}
+}
+
+.sentence-box {
+	margin-bottom: 40px;
+
+	&-title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		h4 {
+			font-size: 1.8rem;
+			font-weight: 500;
+			text-transform: capitalize;
+		}
+	}
+
+	&-desc {
+		p {
+			font-size: 1.4rem;
+			line-height: 1.5;
+		}
+	}
+}

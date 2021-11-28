@@ -1,0 +1,25 @@
+@mixin small-breakpoint {
+  @media (min-width: #{$small}) {
+    @content;
+  }
+}
+
+@mixin medium-breakpoint {
+  @media (min-width: #{$width}) {
+    @content;
+  }
+}
+
+@mixin large-breakpoint {
+  @media (min-width: #{$width}) {
+    @content;
+  }
+}
+
+@mixin lineOmit($line) {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}

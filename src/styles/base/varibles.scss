@@ -1,0 +1,27 @@
+// 尺寸
+$small: 920px;
+$large: 1170px;
+
+$width: $small;
+
+// nav height
+$nav-pc: 80px;
+
+// font
+$font-size: 1rem;
+$font-style: normal;
+$font-weight: normal;
+$line-height: 1.6;
+
+// border
+$border-radius-small: 4px;
+$border-radius-medium: 6px;
+$border-radius-large: 8px;
+$border-radius-circle: 50%;
+
+// flex center
+%flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

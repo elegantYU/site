@@ -1,0 +1,16 @@
+@import './base/reset.scss';
+@import './base/mixin.scss';
+@import './base/varibles.scss';
+@import './components/markdown.scss';
+
+// theme
+@import './theme/color.scss';
+@import './theme/theme.scss';
+
+// component
+@import './components/layout.scss';
+@import './components/home.scss';
+@import './components/article.scss';
+@import './components/photos.scss';
+@import './components/sentence.scss';
+@import './components/blog.scss';
