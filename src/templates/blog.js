@@ -1,41 +1,55 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React, { useState } from 'react';
+import { graphql, useScrollRestoration } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Layout from '../layout';
 import Seo from '../components/SEO';
+import Sidebar from '../components/blog/sidebar';
 
 const Blog = ({ data }) => {
-  console.log('blogblogblog', data);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const blogRestoration = useScrollRestoration('blog') 
   const {
     mdx: {
       body,
       cover,
-      frontmatter: { title, categories, excerpt, date },
+      frontmatter: { title, categories, excerpt, date, slug },
     },
   } = data;
-  console.log('thumbnail', cover)
+  const gitalkConfig = {
+    id: slug,
+    title,
+  };
+  const elasticClass = `blog-elastic-container ${sidebarOpen ? 'sidebar-open' : ''}`;
+
+  const switchSidebarStatus = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
 
   return (
     <Layout>
       <Seo title={title} description={excerpt} />
-      <div className="blog-wrapper">
-        <div className="blog-header">
-          <div className="blog-header-detail">
-            <p className="blog-header-detail-category">{categories[0]}</p>
-            <p className="blog-header-detail-point"></p>
-            <p className="blog-header-detail-date">{ date }</p>
+      <div className={elasticClass} {...blogRestoration}>
+        <button className="temp-btn" onClick={switchSidebarStatus}>开关</button>
+        <div className='blog-wrapper'>
+          <div className='blog-header'>
+            <div className='blog-header-detail'>
+              <p className='blog-header-detail-category'>{categories[0]}</p>
+              <p className='blog-header-detail-point'></p>
+              <p className='blog-header-detail-date'>{date}</p>
+            </div>
+            <section className='blog-title'>{title}</section>
+            <section className='blog-desc'>{excerpt}</section>
           </div>
-          <section className="blog-title">{title}</section>
-          <section className="blog-desc">{excerpt}</section>
+          <div className='blog-banner'>
+            <GatsbyImage image={cover.childImageSharp.gatsbyImageData} alt={title} />
+          </div>
+          <div className='markdown-body'>
+            <MDXRenderer>{body}</MDXRenderer>
+          </div>
         </div>
-        <div className="blog-banner">
-          <GatsbyImage image={cover.childImageSharp.gatsbyImageData} alt={title} />
-        </div>
-        <div className='markdown-body'>
-          <MDXRenderer>{body}</MDXRenderer>
-        </div>
+        <Sidebar data={gitalkConfig} active={sidebarOpen} />
       </div>
     </Layout>
   );
@@ -47,6 +61,7 @@ export const pageQuery = graphql`
       id
       body
       frontmatter {
+        slug
         title
         excerpt
         categories
@@ -54,7 +69,7 @@ export const pageQuery = graphql`
       }
       cover {
         childImageSharp {
-          gatsbyImageData(jpgOptions: {progressive: true, quality: 90})
+          gatsbyImageData(jpgOptions: { progressive: true, quality: 90 })
         }
       }
     }

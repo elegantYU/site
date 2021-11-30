@@ -1,7 +1,6 @@
 ---
 title: "打印dom🌲"
 date: 2021-08-04 11:17:14
-excerpt: 
 template: post
 categories:
   - 算法
@@ -9,6 +8,7 @@ tags:
   - DFS && BFS
 slug: algorithm-printDomTree
 thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
+excerpt: 好友所在厂面试题，是谁我不说~
 ---
 
 ## 题目

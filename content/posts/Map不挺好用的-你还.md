@@ -1,6 +1,5 @@
 ---
 title: 'Map不挺好用的,你还...'
-excerpt: 
 date: 2020-04-06 15:12:45
 template: post
 categories:
@@ -9,9 +8,8 @@ tags:
 	-	map
 slug: es6-map
 thumbnail: https://i.loli.net/2020/12/31/XzStjfqlsrp8NQD.png
+excerpt: 闲来无事水一篇。
 ---
-
-闲来无事水一篇。
 
 ## Map?
 

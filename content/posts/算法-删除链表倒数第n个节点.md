@@ -1,6 +1,6 @@
 ---
 title: 删除链表倒数第n个节点
-excerpt: 
+excerpt: 干算法第三天
 date: 2021-07-14 17:26:26
 template: post
 categories:
@@ -10,10 +10,6 @@ tags:
 slug: algorithm-reomveNodeFromEnd
 thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
 ---
-
-干算法第三天
-
-<!-- more -->
 
 ## 题目
 

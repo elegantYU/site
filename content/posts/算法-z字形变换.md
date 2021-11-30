@@ -1,6 +1,5 @@
 ---
 title: z字形变换
-excerpt: 
 date: 2021-07-13 15:15:08
 template: post
 categories:
@@ -9,11 +8,8 @@ tags:
 	-	算法
 slug: algorithm-covertz
 thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
+excerpt: 肝算法第一天
 ---
-
-肝算法第一天
-
-<!-- more -->
 
 ## 题目
 

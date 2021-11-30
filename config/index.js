@@ -6,7 +6,7 @@ module.exports = {
 	site: 'https://www.elegantyu.cn',
 	username: '聆道人',
 	userEmail: 'elegantyu2019@gmail.com',
-	iconfont: 'font_2638901_qb53ouff9ak',
+	iconfont: 'font_2638901_6p6ogy2zs6h',
 	routes: [
 		{
 			path: '/works',
@@ -71,4 +71,11 @@ module.exports = {
 			icon: "icon-share-steam",
 		}
 	],
+	gitalk: {
+		clientID: "721d937a5e5b6d8a6332",
+		clientSecret: "e4c826cb05a1b5bf5a08ae8f60e9c4e68be0a107",
+		repo: "site",
+		owner: "elegantYU",
+		admin: ["elegantYU"],
+	}
 };

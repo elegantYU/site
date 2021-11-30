@@ -1,6 +1,5 @@
 ---
 title: LeetCode-最长回文子串
-excerpt: 
 date: 2020-11-09 15:55:26
 template: post
 categories:
@@ -9,6 +8,7 @@ tags:
 	-	算法
 slug: longest-palindromic-substring
 thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
+excerpt: 啥写点呢
 ---
 
 # 最长回文子串 - 5

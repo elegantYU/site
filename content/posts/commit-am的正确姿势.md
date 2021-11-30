@@ -1,14 +1,14 @@
 ---
 title: commit -am的正确姿势
-excerpt: 
 date: 2020-05-11 10:18:22
 template: post
-categories:
-	-	Git
-tags: 
-	-	git
 slug: git-commit-am
 thumbnail: https://i.loli.net/2021/11/14/HbhNRSKZ3JrBa8C.jpg
+tags: 
+	-	git
+categories:
+	-	Git
+excerpt: 装杯做好打脸的准备...
 ---
 
 > 记一次尴尬的提交...

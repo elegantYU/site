@@ -7,13 +7,9 @@ categories:
 	-	教程
 tags: 
 	-	css
-excerpt: 
+excerpt: 换季了，多喝热水 ☕️
 thumbnail: https://i.loli.net/2020/12/31/XzStjfqlsrp8NQD.png
 ---
-
-换季了，多喝热水 ♨️
-
-<!-- more -->
 
 这里的 css 部分是根据项目总结的，还有些有的没的，来自于个人兴趣。
 瞧一瞧看一看，不要你一分钱，赔本赚吆喝。

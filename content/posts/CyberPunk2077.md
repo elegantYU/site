@@ -1,14 +1,14 @@
 ---
 title: CyberPunk2077
-excerpt: 
 date: 2020-12-31 11:33:55
 template: post
-categories:
-	-	游戏
 tags: 
 	-	赛博朋克
 slug: CyberPunk2077
 thumbnail: https://i.loli.net/2020/12/31/XzStjfqlsrp8NQD.png
+categories:
+	-	游戏
+excerpt: CyberPunk || BugPunk
 ---
 
 > "赛博朋克2077真的是2020年我玩过的最精彩的游戏"  —— ElegantYU

@@ -3,7 +3,7 @@ title: 关于git的几件小事
 date: 2021-10-24 09:57:10
 template: post
 thumbnail: https://i.loli.net/2021/11/14/HbhNRSKZ3JrBa8C.jpg
-excerpt: 这里是描述
+excerpt: 不为谁而写的文档，git 新手可看
 slug: team-git
 categories:
   - Git

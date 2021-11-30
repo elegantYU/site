@@ -6,7 +6,7 @@ html {
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   outline: none;
 }
 
@@ -117,7 +117,8 @@ pre {
 }
 
 input,
-button {
+button,
+textarea {
   border: none;
   box-shadow: none;
 }
@@ -140,7 +141,7 @@ hr {
   width: 12px;
   margin: 48px auto;
   border: none;
-  border-top: 1px solid #989da3;
+  border-top: 1px solid var(--hr);
 
   &::before,
   &::after {
@@ -148,7 +149,7 @@ hr {
     position: absolute;
     width: 2px;
     border: none;
-    border-top: 1px solid #989da3;
+    border-top: 1px solid var(--hr);
   }
 
   &::before {

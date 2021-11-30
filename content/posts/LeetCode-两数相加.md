@@ -1,6 +1,5 @@
 ---
 title: LeetCode-两数相加
-excerpt: 
 date: 2020-11-04 18:14:39
 template: post
 categories:
@@ -9,6 +8,7 @@ tags:
 	-	算法
 slug: add-two-numbers
 thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
+excerpt: 写点啥呢
 ---
 
 # 两数相加 - 2

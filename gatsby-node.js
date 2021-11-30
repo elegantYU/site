@@ -1,8 +1,11 @@
+require('dotenv').config()
 const path = require('path')
 const moment = require("moment");
 const kebabCase = require("lodash.kebabcase");
 const { generateImageData, getLowResolutionImageURL } = require('gatsby-plugin-image')
 const { createRemoteFileNode } = require('gatsby-source-filesystem')
+const { GitalkPluginHelper } = require('gatsby-plugin-gitalk')
+const config = require('./config')
 
 
 const postNodes = []
@@ -131,10 +134,13 @@ exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
   }
 };
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, getNode, reporter }) => {
   const { createPage } = actions
+  const site = getNode('Site')
+  const {siteMetadata: {siteUrl}} = site
   const blogPage = path.resolve('src/templates/blog.js')
-  
+  const gitalkCreateIssueToken = process.env.GITALK_CREATE_ISSUE_TOKEN
+
   return new Promise((resolve, reject) => {
     const fetchBlog = () => graphql(`
       {
@@ -144,6 +150,8 @@ exports.createPages = ({ graphql, actions }) => {
             frontmatter {
               slug
               tags
+              title
+              excerpt
               template
               categories
             }
@@ -158,15 +166,31 @@ exports.createPages = ({ graphql, actions }) => {
         return reject(errors)
       }
 
-      data.allMdx.nodes.forEach(node => {
-        if (node.frontmatter.template === 'post') {
+      data.allMdx.nodes.forEach(async (node) => {
+        const { template, excerpt, slug } = node.frontmatter
+
+        if (template === 'post') {
           createPage({
-            path: `article/${node.frontmatter.slug}`,
+            path: `article/${slug}`,
             component: blogPage,
             context: {
-              slug: node.frontmatter.slug
+              slug: slug
             }
           })
+
+          // create issue
+          if (gitalkCreateIssueToken) {
+            const issueOptions = Object.assign({}, config.gitalk, {
+              id: slug,
+              title: slug,
+              description: excerpt,
+              url: `${siteUrl}/article/${slug}`,
+            }, {
+              personalToken: gitalkCreateIssueToken
+            })
+            reporter.info(`create issue: ${slug}`)
+            await GitalkPluginHelper.createIssue(issueOptions)
+          }
         }
       })
 

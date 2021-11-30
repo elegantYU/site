@@ -3,18 +3,15 @@ title: 一分钟速成hexo搭建博客教学
 slug: learn_hexo
 date: 2019-04-18 22:12:46
 template: post
-excerpt: 
 categories:
 	-	教程
 tags: 
 	-	博客
 thumbnail: https://i.loli.net/2020/12/31/XzStjfqlsrp8NQD.png
+excerpt: |
+  此篇博客乃在下历时月许，拖沓至今才准备出的 hexo+github 搭建博客教学。
+  从头至尾皆是本人的亲生体会，希望对大家有所借鉴和帮助
 ---
-
-> 此篇博客乃在下历时月许，拖沓至今才准备出的 hexo+github 搭建博客教学。
-> 从头至尾皆是本人的亲生体会，希望对大家有所借鉴和帮助
-
-<!-- more -->
 
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 

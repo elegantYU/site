@@ -1,3 +1,5 @@
+const config = require('./config')
+
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.elegantyu.cn',
@@ -89,5 +91,11 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "gatsby-plugin-gitalk",
+      options: {
+        config: config.gitalk
+      }
+    }
   ],
 };

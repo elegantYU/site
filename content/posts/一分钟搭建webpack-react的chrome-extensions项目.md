@@ -1,6 +1,5 @@
 ---
 title: 一分钟搭建webpack+react的chrome-extensions项目
-excerpt: 
 date: 2020-06-07 15:00:38
 template: post
 categories:
@@ -9,6 +8,7 @@ tags:
 	-	插件
 slug: webpack+react
 thumbnail: https://i.loli.net/2020/12/31/XzStjfqlsrp8NQD.png
+excerpt: 嘿嘿嘿
 ---
 
 客厅吹来的徐徐清风，一缕缕带走房间里沉闷的空气，窗外杨树摇摆着夏日繁茂的枝丫，趴在刚换完床单的床上，耳边“梭梭”声若隐若现，大自然的呢喃远比合成的白噪音悦耳。
