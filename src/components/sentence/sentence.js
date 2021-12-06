@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Sentence = () => {
-	console.log('object');
 
 	return (
 		<section className='sentence-box'>

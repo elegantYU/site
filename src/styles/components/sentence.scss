@@ -15,6 +15,7 @@
 		font-size: 1.6rem;
 		position: relative;
 		margin: 0;
+		color: var(--sentence-title);
 
 		&::before {
 			content: '“';
@@ -46,6 +47,11 @@
 			font-size: 1.8rem;
 			font-weight: 500;
 			text-transform: capitalize;
+			color: var(--sentence-title);
+		}
+
+		span {
+			color: var(--sentence-desc);
 		}
 	}
 
@@ -53,6 +59,7 @@
 		p {
 			font-size: 1.4rem;
 			line-height: 1.5;
+			color: var(--sentence-desc);
 		}
 	}
 }

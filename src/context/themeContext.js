@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+const darkMode = typeof window !== 'undefined' && window?.matchMedia('(prefers-color-scheme: dark)');
 const defaultContext = {
-	dark: darkMode && darkMode.matches,
+	dark: darkMode?.matches,
 };
 const ThemeContext = createContext(defaultContext);
 
