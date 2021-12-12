@@ -2,17 +2,6 @@ const config = require('./config')
 const proxy = require('http-proxy-middleware')
 
 module.exports = {
-  // developMiddleware: app => {
-  //   app.use(
-  //     "/.netlify/functions/",
-  //     proxy({
-  //       target: "http://localhost:8000",
-  //       pathRewrite: {
-  //         "/.netlify/functions/": "",
-  //       }
-  //     })
-  //   )
-  // },
   siteMetadata: {
     siteUrl: 'https://www.elegantyu.cn',
     title: '聆道人',

@@ -1,18 +1,19 @@
 import React from 'react';
+import moment from 'moment/min/moment.min'
 
-const Sentence = () => {
+const Sentence = ({ data }) => {
+  const { _id, title, content, createTime, latest } = data;
+  const date = moment(createTime).format('MMM DD HH:mm')
 
-	return (
-		<section className='sentence-box'>
-			<div className='sentence-box-title'>
-				<h4>下贱</h4>
-				<span>05/07 2021</span>
-			</div>
-			<div className='sentence-box-desc'>
-				<p>正经人谁写日记，谁能把心里话写日记里，写出来的能叫心里话？</p>
-			</div>
-		</section>
-	);
+  return (
+    <section className='sentence-box'>
+      <div className='sentence-box-title'>
+        <h4>{title}</h4>
+        <span>{date}</span>
+      </div>
+      <div className='sentence-box-desc' dangerouslySetInnerHTML={{__html: content}}></div>
+    </section>
+  );
 };
 
 export default Sentence;
