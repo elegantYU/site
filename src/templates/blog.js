@@ -9,7 +9,7 @@ import Sidebar from '../components/blog/sidebar';
 
 const Blog = ({ data }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const blogRestoration = useScrollRestoration('blog') 
+  const blogRestoration = useScrollRestoration('blog');
   const {
     mdx: {
       body,
@@ -24,16 +24,18 @@ const Blog = ({ data }) => {
   const elasticClass = `blog-elastic-container ${sidebarOpen ? 'sidebar-open' : ''}`;
 
   const switchSidebarStatus = () => {
-    setSidebarOpen(!sidebarOpen)
-  }
+    setSidebarOpen(!sidebarOpen);
+  };
 
   return (
     <Layout>
       <Seo title={title} description={excerpt} />
       <div className={elasticClass} {...blogRestoration}>
-        <button className="temp-btn" onClick={switchSidebarStatus}>开关</button>
+        <button className='temp-btn' onClick={switchSidebarStatus}>
+          开关
+        </button>
         <div className='blog-wrapper'>
-          <div className='blog-header'>
+          <div div className='blog-header'>
             <div className='blog-header-detail'>
               <p className='blog-header-detail-category'>{categories[0]}</p>
               <p className='blog-header-detail-point'></p>

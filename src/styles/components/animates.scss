@@ -1,0 +1,15 @@
+// 集合所有动画 争取做到组件动效同步 协调
+.fade-enter {
+  opacity: 0;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 0.4s linear;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 0.4s linear;
+}

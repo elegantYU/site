@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import FlipMove from 'react-flip-move';
 
 import Layout from '../layout';
 import Seo from '../components/SEO';
@@ -103,11 +105,19 @@ const Article = ({ data }) => {
         </div>
         <div className='article-categories'>{renderCategoriesJSX()}</div>
         {list.length ? (
-          <section className='style-grid'>{renderListJSX(list)}</section>
+          <FlipMove
+            className='style-grid'
+            enterAnimation='fade'
+            leaveAnimation='fade'
+            appearAnimation='fade'
+            staggerDelayBy={50}
+          >
+            {renderListJSX(list)}
+          </FlipMove>
         ) : (
           <section className='article-empty'>
-						<p>似乎没有这种文章...</p>
-					</section>
+            <p>似乎没有这种文章...</p>
+          </section>
         )}
       </div>
     </Layout>
