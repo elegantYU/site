@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import FlipMove from 'react-flip-move';
 
 import Layout from '../layout';
 import Seo from '../components/SEO';
 import BlogGrid from '../components/blog/blogGrid';
 
-const renderListJSX = (list) => list.map((v) => <BlogGrid data={v} key={v.id} />);
+const renderListJSX = (list) => list.map((v, i) => <BlogGrid data={v} key={v.id} style={{ animationDelay: `${i * 100}ms` }} />);
 
 const Article = ({ data }) => {
   const {
@@ -105,15 +104,7 @@ const Article = ({ data }) => {
         </div>
         <div className='article-categories'>{renderCategoriesJSX()}</div>
         {list.length ? (
-          <FlipMove
-            className='style-grid'
-            enterAnimation='fade'
-            leaveAnimation='fade'
-            appearAnimation='fade'
-            staggerDelayBy={50}
-          >
-            {renderListJSX(list)}
-          </FlipMove>
+          <section className='style-grid'>{renderListJSX(list)}</section>
         ) : (
           <section className='article-empty'>
             <p>似乎没有这种文章...</p>

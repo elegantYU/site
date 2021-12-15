@@ -18,7 +18,7 @@ const verseList = [
   '还未如愿见着不朽 就把自己先搞丢'
 ];
 
-const renderSentenceJSX = (list) => list.map((v) => <Sentence data={v} key={v._id} />);
+const renderSentenceJSX = (list) => list.map((v, i) => <Sentence data={v} key={v._id} style={{ animationDelay: `${i * 100}ms` }} />);
 
 const Daily = () => {
   const [pageParams, setPageParams] = useState({ page: 1, size: 20 });

@@ -35,7 +35,7 @@ const Blog = ({ data }) => {
           开关
         </button>
         <div className='blog-wrapper'>
-          <div div className='blog-header'>
+          <div className='blog-header'>
             <div className='blog-header-detail'>
               <p className='blog-header-detail-category'>{categories[0]}</p>
               <p className='blog-header-detail-point'></p>

@@ -1,66 +1,71 @@
 #sentence {
-	width: $large;
-	margin: 0 auto;
+  max-width: $large;
+  margin: 0 auto;
 }
 
 .sentence-title {
-	$height: 200px;
+  $height: 200px;
 
-	@extend %flex-center;
+  @extend %flex-center;
 
-	height: $height;
-	margin-bottom: 40px;
+  height: $height;
+  margin-bottom: 40px;
+	opacity: 0;
+	animation: fade 0.2s linear forwards;
 
-	h1 {
-		font-size: 1.6rem;
-		position: relative;
-		margin: 0;
-		color: var(--sentence-title);
+  h1 {
+    font-size: 1.6rem;
+    position: relative;
+    margin: 0;
+    color: var(--sentence-title);
 
-		&::before {
-			content: '“';
-			position: absolute;
-			top: 0;
-			left: -1em;
-			font-size: 1.2rem;
-		}
+    &::before {
+      content: '“';
+      position: absolute;
+      top: 0;
+      left: -1em;
+      font-size: 1.2rem;
+    }
 
-		&::after {
-			content: '”';
-			position: absolute;
-			top: 0;
-			right: -1em;
-			font-size: 1.2rem;
-		}
-	}
+    &::after {
+      content: '”';
+      position: absolute;
+      top: 0;
+      right: -1em;
+      font-size: 1.2rem;
+    }
+  }
 }
 
 .sentence-box {
-	margin-bottom: 40px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fade 0.2s linear forwards, slideUp 0.2s linear forwards;
 
-	&-title {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin-bottom: 20px;
+  &-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
 
-		h4 {
-			font-size: 2.4rem;
-			font-weight: 500;
-			text-transform: capitalize;
-			color: var(--sentence-title);
-		}
+    h4 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      text-transform: capitalize;
+      color: var(--sentence-title);
+    }
 
-		span {
-			color: var(--sentence-desc);
-		}
-	}
+    span {
+      color: var(--sentence-desc);
+    }
+  }
 
-	&-desc {
-		p {
-			font-size: 1.4rem;
-			line-height: 1.8;
-			color: var(--sentence-desc);
-		}
-	}
+  &-desc {
+    p {
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: var(--sentence-desc);
+      margin-bottom: 0.75em;
+    }
+  }
 }

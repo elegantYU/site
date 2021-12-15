@@ -13,3 +13,23 @@
   opacity: 0;
   transition: opacity 0.4s linear;
 }
+
+// fade
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// slideUp
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

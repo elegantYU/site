@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-const BlogGrid = forwardRef(({ data }, ref) => {
+const BlogGrid = ({ data, style }) => {
   const {
     frontmatter: { title, date, categories, excerpt },
     fields: { slug },
@@ -10,7 +10,7 @@ const BlogGrid = forwardRef(({ data }, ref) => {
   } = data;
 
   return (
-    <div className='blog-grid' ref={ref}>
+    <div className='blog-grid' style={style}>
       <Link className='blog-grid-cover' to={slug}>
         <GatsbyImage image={childImageSharp.gatsbyImageData} alt='' />
       </Link>
@@ -26,6 +26,6 @@ const BlogGrid = forwardRef(({ data }, ref) => {
       <div className='blog-grid-excerpt'>{excerpt}</div>
     </div>
   );
-});
+};
 
 export default BlogGrid;

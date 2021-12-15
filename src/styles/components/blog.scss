@@ -40,6 +40,8 @@ $sidebar-width: 380px;
 .blog-header {
   max-width: $wrapper-content-width;
   margin: 0 auto 40px;
+  opacity: 0;
+  animation: fade 0.2s linear 0.3s forwards, slideUp 0.2s linear forwards;
 
   &-detail {
     @extend %flex-center;
@@ -80,6 +82,8 @@ $sidebar-width: 380px;
   overflow: hidden;
   cursor: default;
   margin-bottom: 60px;
+  opacity: 0;
+  animation: fade 0.2s linear 0.15s forwards, slideUp 0.2s linear 0.15s forwards;
 
   .gatsby-image-wrapper-constrained {
     width: 100%;
@@ -95,4 +99,6 @@ $sidebar-width: 380px;
 .markdown-body {
   max-width: $wrapper-content-width;
   margin: 0 auto;
+  opacity: 0;
+  animation: fade 0.2s linear 0.3s forwards, slideUp 0.2s linear 0.3s forwards;
 }
