@@ -15,10 +15,11 @@ const verseList = [
   '我们迷失着在这条路的两端',
   '比你聪明的人阿 都在努力往前 我无力的闭上眼',
   '等一个自然而然的晴天 我想要带你去海边',
-  '还未如愿见着不朽 就把自己先搞丢'
+  '还未如愿见着不朽 就把自己先搞丢',
 ];
 
-const renderSentenceJSX = (list) => list.map((v, i) => <Sentence data={v} key={v._id} style={{ animationDelay: `${i * 100}ms` }} />);
+const renderSentenceJSX = (list) =>
+  list.map((v, i) => <Sentence data={v} key={v._id} style={{ animationDelay: `${i * 100}ms` }} />);
 
 const Daily = () => {
   const [pageParams, setPageParams] = useState({ page: 1, size: 20 });

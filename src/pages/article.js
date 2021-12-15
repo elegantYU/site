@@ -6,7 +6,8 @@ import Layout from '../layout';
 import Seo from '../components/SEO';
 import BlogGrid from '../components/blog/blogGrid';
 
-const renderListJSX = (list) => list.map((v, i) => <BlogGrid data={v} key={v.id} style={{ animationDelay: `${i * 100}ms` }} />);
+const renderListJSX = (list) =>
+  list.map((v, i) => <BlogGrid data={v} key={v.id} style={{ animationDelay: `${i * 100}ms` }} />);
 
 const Article = ({ data }) => {
   const {
