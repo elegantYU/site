@@ -5,6 +5,7 @@ import Layout from '../layout';
 import Seo from '../components/SEO';
 import Title from '../components/sentence/title';
 import Sentence from '../components/sentence/sentence';
+import useLoadMore from '../hooks/useLoadMore';
 
 const verseList = [
   '总有一些无病呻吟',
@@ -22,10 +23,11 @@ const renderSentenceJSX = (list) =>
   list.map((v, i) => <Sentence data={v} key={v._id} style={{ animationDelay: `${i * 100}ms` }} />);
 
 const Daily = () => {
-  const [pageParams, setPageParams] = useState({ page: 1, size: 20 });
+  const [pageParams, setPageParams] = useState({ page: 1, size: 5 });
   const [dailyData, setDailyData] = useState([]);
   const [isLoadAll, setLoadAll] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const { canLoad } = useLoadMore({});
 
   const getPageList = async () => {
     if (isLoadAll || isLoading) return;
@@ -48,9 +50,20 @@ const Daily = () => {
       .finally((_) => setLoading(false));
   };
 
+  const handleScroll = (e) => {
+    if (canLoad) {
+      const { page, size } = pageParams;
+      setPageParams({ page: page + 1, size });
+    }
+  };
+
+  useEffect(() => {
+    handleScroll();
+  }, [canLoad]);
+
   useEffect(() => {
     getPageList();
-  }, []);
+  }, [pageParams]);
 
   return (
     <Layout>

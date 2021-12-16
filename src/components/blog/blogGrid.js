@@ -15,15 +15,17 @@ const BlogGrid = ({ data, style }) => {
         <GatsbyImage image={childImageSharp.gatsbyImageData} alt='' />
       </Link>
 
-      <div className='blog-grid-desc'>
-        <span className='blog-grid-tag'>{categories[0]}</span>
-        <span className='blog-grid-point'></span>
-        <span className='blog-grid-date'>{date}</span>
+      <div className='blog-grid-detail'>
+        <div className='blog-grid-desc'>
+          <span className='blog-grid-tag'>{categories[0]}</span>
+          <span className='blog-grid-point'></span>
+          <span className='blog-grid-date'>{date}</span>
+        </div>
+        <Link className='blog-grid-title' to={slug}>
+          {title}
+        </Link>
+        <div className='blog-grid-excerpt'>{excerpt}</div>
       </div>
-      <Link className='blog-grid-title' to={slug}>
-        {title}
-      </Link>
-      <div className='blog-grid-excerpt'>{excerpt}</div>
     </div>
   );
 };

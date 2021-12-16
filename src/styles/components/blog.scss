@@ -22,7 +22,7 @@ $sidebar-width: 380px;
   box-shadow: inset 1px 1px 0 var(--side-border);
   pointer-events: none;
   z-index: 10;
-  
+
   &.sidebar-open {
     transform: translateX(0);
     opacity: 1;

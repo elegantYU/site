@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { moveToView } from '../utils';
 
 import Layout from '../layout';
 import Seo from '../components/SEO';
@@ -65,7 +65,7 @@ const Article = ({ data }) => {
     const { value } = inputEl.current;
     setKeywords(value);
 
-    if (e.keyCode === 13) {
+    if (e.code === 'Enter') {
       filterArticle();
     }
   };
@@ -73,6 +73,19 @@ const Article = ({ data }) => {
   const handleSearchClean = () => {
     inputEl.current.value = '';
     setKeywords('');
+  };
+
+  const evokeSearch = (e) => {
+    if (inputEl.current === document.activeElement) return;
+
+    if (e.code === 'Slash') {
+      moveToView(inputEl.current);
+      setTimeout(() => {
+        inputEl.current.focus();
+      }, 1000);
+    } else {
+      console.log('notify 引导点击 Slash');
+    }
   };
 
   const renderCategoriesJSX = () =>
@@ -93,6 +106,11 @@ const Article = ({ data }) => {
   useEffect(() => {
     filterArticle();
   }, [currentCate]);
+
+  useEffect(() => {
+    window.addEventListener('keyup', evokeSearch);
+    return () => window.removeEventListener('keyup', evokeSearch);
+  }, []);
 
   return (
     <Layout>
