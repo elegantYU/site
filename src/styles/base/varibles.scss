@@ -17,11 +17,12 @@ $line-height: 1.6;
 $border-radius-small: 4px;
 $border-radius-medium: 6px;
 $border-radius-large: 8px;
+$border-radius-max: 10px;
 $border-radius-circle: 50%;
 
 // flex center
 %flex-center {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

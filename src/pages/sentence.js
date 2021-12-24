@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPageListXHR } from '../api/sentence';
+import toast, { Toaster } from 'react-hot-toast';
 
 import Layout from '../layout';
 import Seo from '../components/SEO';
@@ -23,15 +24,19 @@ const renderSentenceJSX = (list) =>
   list.map((v, i) => <Sentence data={v} key={v._id} style={{ animationDelay: `${i * 100}ms` }} />);
 
 const Daily = () => {
-  const [pageParams, setPageParams] = useState({ page: 1, size: 5 });
+  const [pageParams, setPageParams] = useState({ page: 1, size: 20 });
   const [dailyData, setDailyData] = useState([]);
   const [isLoadAll, setLoadAll] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const { canLoad } = useLoadMore({});
 
   const getPageList = async () => {
-    if (isLoadAll || isLoading) return;
+    if (isLoadAll || isLoading) {
+      toast('他底裤都被你看完啦!', { icon: '🐒' });
+      return;
+    }
 
+    toast('Loading...');
     setLoading(true);
     getPageListXHR(pageParams)
       .then(({ data }) => {
@@ -72,6 +77,7 @@ const Daily = () => {
         <Title data={verseList} />
         <section className='sentence-list'>{renderSentenceJSX(dailyData)}</section>
       </div>
+      <Toaster position='bottom-center' toastOptions={{ className: 'toast-my', duration: 2000 }} />
     </Layout>
   );
 };
