@@ -43,9 +43,9 @@ const Layout = ({ children, ...rest }) => {
         <link rel='stylesheet' href={iconfontCss} />
         <script src={iconfontJs} type='text/javascript' />
       </Helmet>
-      <Navigation routes={config.routes} />
+      <Navigation hide={rest?.noHead} routes={config.routes} />
       <main id='main'>{children}</main>
-      {!rest?.noFooter && <Footer />}
+      <Footer hide={rest?.noFooter} />
     </ThemeProvider>
   );
 };

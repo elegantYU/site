@@ -32,8 +32,7 @@ const Daily = () => {
 
   const getPageList = async () => {
     if (isLoadAll || isLoading) {
-      toast('他底裤都被你看完啦!', { icon: '🐒' });
-      return;
+      return toast('他底裤都被你看完啦!', { icon: '🐒' });
     }
 
     toast('Loading...');
@@ -51,7 +50,7 @@ const Daily = () => {
 
         setDailyData([...dailyData, ...list]);
       })
-      .catch((e) => console.log('e', e))
+      .catch((_) => toast('加载失败,真遗憾'))
       .finally((_) => setLoading(false));
   };
 

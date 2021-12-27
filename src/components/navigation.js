@@ -12,11 +12,11 @@ const renderMenuJSX = (routes) =>
     ) : null,
   );
 
-const Navigation = ({ routes }) => {
+const Navigation = ({ routes, hide }) => {
   const { pathname } = useLocation();
   const currentPage = routes.find(({ path }) => path === pathname);
   const { name: pageName } = currentPage ?? { name: '首页' };
-  let headerClass = 'show';
+  let headerClass = hide ? 'hide' : 'show';
 
   return (
     <header className={headerClass}>

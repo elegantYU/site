@@ -1,95 +1,91 @@
 $var-element: '--';
 
 $light: (
-	// common
-	body-bg: $white-ffffff,
-	nav-color: $gray-6e6d7a,
-	nav-color-hover: $black-0d0c22,
-	nav-border: $white-f3f3f4,
-	selection: $white-ffffff,
-	selection-bg: $pink-ea4c89,
-	hr: $gray-989da3,
-
-	// article
-	article-search-font: $black-0d0c22,
-	article-search-bg: $white-ffffff,
-	article-categories: $gray-6e6d7a,
-	article-categories-bold: $black-0d0c22,
-	article-categories-bg: $white-f7f7f7,
-	article-title: $black-0d0c22,
-	article-desc: $black-3d3d4e,
-
-	// sentence
-	sentence-title: $black-0d0c22,
-	sentence-desc: $black-3d3d4e,
-
-	// blog
-	blog-head-detail: $gray-5b6066,
-	blog-head-title: $black-0d0c22,
-
-	// markdown
-	md-color: $black-0d0c22,
-	md-absent: $red-cf222e,
-	md-hr: $white-d0d7de,
-	md-foot: $gary-57606a,
-	md-foot-border: $blue-0960da,
-	md-foot-target: $black-24292f,
-	md-blockquote: $gary-57606a,
-	md-blockquote-border: $white-d0d7de,
-	md-octicon-link: $black-24292f,
-	md-border: $hsla-white210,
-	md-h5: $gary-57606a,
-	md-table-th: $blue-f6f8fa,
-	md-table-bg: $white-ffffff,
-	md-table-eve-bg: $blue-f6f8fa,
-	md-table-border: $white-d0d7de,
-	md-img: $white-ffffff,
-	md-frame: $black-24292f,
-	md-code-bg: $rgba-black175,
-	md-highlight: $blue-f6f8fa,
-	md-link: $blue-0960da,
-
-	// footer
-	fot-icon: $gray-6e6d7a,
-	fot-border: $white-f3f3f4,
-
-	// sidebar
-	side-border: $white-f3f3f4,
-
-	// icon
-	icon-search: $gary-9e9ea7,
-	icon-netease: $red-cc2b29,
-	icon-github: $black-0d0c22,
-	icon-jike: $yellow-ffe411,
-	icon-bilibili: $pink-fb7299,
-	icon-gmail: $blue-5085ec,
-	icon-steam: $blue-24507f,
+  // common
+  body-bg: $white-ffffff,
+  nav-color: $gray-6e6d7a,
+  nav-color-hover: $black-0d0c22,
+  nav-border: $white-f3f3f4,
+  selection: $white-ffffff,
+  selection-bg: $pink-ea4c89,
+  hr: $gray-989da3,
+  // article
+  article-search-font: $black-0d0c22,
+  article-search-bg: $white-ffffff,
+  article-categories: $gray-6e6d7a,
+  article-categories-bold: $black-0d0c22,
+  article-categories-bg: $white-f7f7f7,
+  article-title: $black-0d0c22,
+  article-desc: $black-3d3d4e,
+  // sentence
+  sentence-title: $black-0d0c22,
+  sentence-desc: $black-3d3d4e,
+  // blog
+  blog-head-detail: $gray-5b6066,
+  blog-head-title: $black-0d0c22,
+  // markdown
+  md-color: $black-0d0c22,
+  md-absent: $red-cf222e,
+  md-hr: $white-d0d7de,
+  md-foot: $gary-57606a,
+  md-foot-border: $blue-0960da,
+  md-foot-target: $black-24292f,
+  md-blockquote: $gary-57606a,
+  md-blockquote-border: $white-d0d7de,
+  md-octicon-link: $black-24292f,
+  md-border: $hsla-white210,
+  md-h5: $gary-57606a,
+  md-table-th: $blue-f6f8fa,
+  md-table-bg: $white-ffffff,
+  md-table-eve-bg: $blue-f6f8fa,
+  md-table-border: $white-d0d7de,
+  md-img: $white-ffffff,
+  md-frame: $black-24292f,
+  md-code-bg: $rgba-black175,
+  md-highlight: $blue-f6f8fa,
+  md-link: $blue-0960da,
+  // music
+  mp3-item-bg: $white-ffffff,
+  mp3-item-tit: $black-191308,
+  mp3-item-author: $gary-9e9ea7,
+  // footer
+  fot-icon: $gray-6e6d7a,
+  fot-border: $white-f3f3f4,
+  // sidebar
+  side-border: $white-f3f3f4,
+  // icon
+  icon-search: $gary-9e9ea7,
+  icon-netease: $red-cc2b29,
+  icon-github: $black-0d0c22,
+  icon-jike: $yellow-ffe411,
+  icon-bilibili: $pink-fb7299,
+  icon-gmail: $blue-5085ec,
+  icon-steam: $blue-24507f
 );
 
 $dark: (
-	body-bg: $black-2d2d2d,
-	nav-color: $white-ffffff,
-
-	icon-netease: $red-cc2b29,
-	icon-github: $white-fefaf6,
-	icon-jike: $yellow-ffe411,
-	icon-bilibili: $pink-fb7299,
-	icon-gmail: $blue-5085ec,
+  body-bg: $black-2d2d2d,
+  nav-color: $white-ffffff,
+  icon-netease: $red-cc2b29,
+  icon-github: $white-fefaf6,
+  icon-jike: $yellow-ffe411,
+  icon-bilibili: $pink-fb7299,
+  icon-gmail: $blue-5085ec,
 );
 
 // pure css control
 @media (prefers-color-scheme: light) {
-	:root {
-		@each $name, $color in $light {
-			#{$var-element}#{$name}: #{$color};
-		}
-	}
+  :root {
+    @each $name, $color in $light {
+      #{$var-element}#{$name}: #{$color};
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		@each $name, $color in $light {
-			#{$var-element}#{$name}: #{$color};
-		}
-	}
+  :root {
+    @each $name, $color in $light {
+      #{$var-element}#{$name}: #{$color};
+    }
+  }
 }
