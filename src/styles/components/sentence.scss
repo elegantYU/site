@@ -4,7 +4,7 @@
 }
 
 .sentence-title {
-  $height: 200px;
+  $height: 100px;
 
   @extend %flex-center;
 
@@ -38,18 +38,25 @@
 }
 
 .sentence-box {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  padding: 30px 60px;
+  border-radius: $border-radius-large;
   opacity: 0;
   animation: fade 0.2s linear forwards, slideUp 0.2s linear forwards;
+
+  &:hover,
+  &.active {
+    background-color: #f7f7f7;
+  }
 
   &-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 
     h4 {
-      font-size: 2.4rem;
+      font-size: 1.8rem;
       font-weight: 500;
       text-transform: capitalize;
       color: var(--sentence-title);
@@ -62,10 +69,14 @@
 
   &-desc {
     p {
-      font-size: 1.4rem;
-      line-height: 1.5;
+      font-size: 1.5rem;
+      line-height: 1.95;
       color: var(--sentence-desc);
-      margin-bottom: 0.75em;
+      margin-bottom: 1.2em;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
   }
 }
