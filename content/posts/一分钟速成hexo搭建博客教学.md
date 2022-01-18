@@ -7,14 +7,13 @@ categories:
 	-	教程
 tags: 
 	-	博客
-thumbnail: https://i.loli.net/2020/12/31/XzStjfqlsrp8NQD.png
+thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: |
   此篇博客乃在下历时月许，拖沓至今才准备出的 hexo+github 搭建博客教学。
   从头至尾皆是本人的亲生体会，希望对大家有所借鉴和帮助
 ---
 
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-
 
 ## 博客环境
 
@@ -120,21 +119,21 @@ excerpt: |
 
    - 使用你的 git 账户登录<u>[Travis-CI](https://travis-ci.org/)</u>，进入<u>[travis-ci.org/account/repositories](https://travis-ci.org/account/repositories)</u>页面，如下图
 
-     ![travis配置](https://i.loli.net/2019/04/21/5cbc1252a36f5.png "travis ci 个人仓库")
+     ![travis配置](https://i.loli.net/2019/04/21/5cbc1252a36f5.png 'travis ci 个人仓库')
 
    - 点击`<你的git名>.github.io`仓库后的 settings，进入设置页
 
-     ![travis配置](https://i.loli.net/2019/04/21/5cbc1252a303e.png "travis ci 仓库配置")
+     ![travis配置](https://i.loli.net/2019/04/21/5cbc1252a303e.png 'travis ci 仓库配置')
 
    - 在这里需要配置你的环境变量(Environment Variables)，起一个你觉得好听的名字(我这里叫`ACCESS_TOKEN`)，然后去 github 获取 token
 
-     ![travis配置](https://i.loli.net/2019/04/21/5cbc1462546f3.png "环境变量")
+     ![travis配置](https://i.loli.net/2019/04/21/5cbc1462546f3.png '环境变量')
 
    - 进入[github.com/settings/developers](https://github.com/settings/developers)页面，点击`Personal access tokens`，选择生成一个新 token(Generate new token)
 
    - 选择 repo 所有权限
 
-     ![Generate new token](https://i.loli.net/2019/04/21/5cbc1252ba0e6.png "生成access_token")
+     ![Generate new token](https://i.loli.net/2019/04/21/5cbc1252ba0e6.png '生成access_token')
 
    - 将生成的 token 复制，粘贴到 travis ci 页面的 value 里(此 token 以后在 github 中不会再次显示，若是忘记可再次生成一个)，添加进去
 
@@ -236,13 +235,13 @@ $ git push
 
 - 注册 gitment,在<u>[New OAuth App](https://github.com/settings/applications/new)</u>为博客创建一个密钥
 
-  ![get info](http://ww1.sinaimg.cn/large/006665PZgy1g2e2uilm1cj30m00fr74y.jpg "生成密钥")
+  ![get info](http://ww1.sinaimg.cn/large/006665PZgy1g2e2uilm1cj30m00fr74y.jpg '生成密钥')
 
   ```yml
-  Application name: "给你放置评论的仓库起名"
-  Homepage URL: "可以直接填你的博客链接"
-  Application deccription: "描述..."
-  Authorization callback URL: "这个必须填博客地址"
+  Application name: '给你放置评论的仓库起名'
+  Homepage URL: '可以直接填你的博客链接'
+  Application deccription: '描述...'
+  Authorization callback URL: '这个必须填博客地址'
   # 注意 Homepage 和 callback 的url后都要加 / (这里也是一个坑)
   # 例 https://elegantyu.github.io/
   ```
@@ -274,24 +273,21 @@ $ git push
   <div id="gitment"></div>
   <!-- 下面两个链接时助你越过一个大坑 -->
   <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css" />
   <!-- 初始化gitment实例 -->
   <script>
     let gitment = new Gitment({
       // 关于id这一点要重点说下，这里又是一个大坑，在下面细说
-      id: "<%= page.slug %>",
+      id: '<%= page.slug %>',
       // 这里要注意映入yml里面的配置 要加上theme,不然默认引入最外层的config.yml
-      owner: "<%= theme.gitment.github_user %>",
-      repo: "<%= theme.gitment.github_repo %>",
+      owner: '<%= theme.gitment.github_user %>',
+      repo: '<%= theme.gitment.github_repo %>',
       oauth: {
-        client_id: "<%= theme.gitment.client_id %>",
-        client_secret: "<%= theme.gitment.client_secret %>"
-      }
+        client_id: '<%= theme.gitment.client_id %>',
+        client_secret: '<%= theme.gitment.client_secret %>',
+      },
     });
-    gitment.render("gitment");
+    gitment.render('gitment');
   </script>
   ```
 
@@ -324,9 +320,9 @@ $ git push
 
     ```md
     ---
-    title: {{ title }}
+    title: { { title } }
     slug:
-    date: {{ date }}
+    date: { { date } }
     tags:
     ---
     ```
@@ -358,11 +354,11 @@ $ git push
     'autocorrect="off"',
     'autocapitalize="off"',
     'spellcheck="false"',
-    'contenteditable="true"'
+    'contenteditable="true"',
   ];
-  const attributesStr = attributes.join(" ");
+  const attributesStr = attributes.join(' ');
   // 此方法可以获取所有文章的全部内容，具体可以打印 data
-  hexo.extend.filter.register("after_post_render", data => {
+  hexo.extend.filter.register('after_post_render', (data) => {
     // 这里是使用while持续获取匹配到的代码区域的dom标签
     // 这里可能就有人问'为什么别人的文章都是/<figure ***>/你的是/<pre>***/'
     // 你说为啥不一样，我们用的不是一个主题呗，这里的正则是根据你当前主题内文章渲染后代码区域的dom标签来定
@@ -371,8 +367,7 @@ $ git push
       // 之后的操作就是将匹配到的标签，在其外层拼接一个div，然后返回所有文章
       data.content = data.content.replace(/<pre>(([\s\S])*?)<\/pre>/, () => {
         let lastMatch = RegExp.lastMatch;
-        let language =
-          RegExp.$1.match(/(?<= )class=".*?"/)[0].split("=")[1] || "plain";
+        let language = RegExp.$1.match(/(?<= )class=".*?"/)[0].split('=')[1] || 'plain';
         lastMatch = lastMatch.replace(/<pre>/, '<pre class="iseeu">');
         return `<div class="highlight-wrap"${attributesStr} data-rel=${language.toUpperCase()}>${lastMatch}</div>`;
       });
@@ -383,62 +378,62 @@ $ git push
 
 - `highlight-wrap`的 css 样式，写在你的主题目录下的全局 css/less/scss/...文件中
   ```css
-   /* mac panel */ 
-   .highlight-wrap[data-rel] { 
-     position: relative; 
-     overflow: hidden; 
-     border-radius: 5px; 
-     box-shadow: 0 10px 30px 0px rgba(0,0,0,0.4); 
-     margin: 35px 0; 
-    }
-    .highlight-wrap[data-rel] ::-webkit-scrollbar { 
-      height: 10px; 
-    } 
-    .highlight-wrap[data-rel] ::-webkit-scrollbar-track { 
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-      border-radius: 10px; 
-    } 
-    .highlight-wrap[data-rel] ::-webkit-scrollbar-thumb { 
-      border-radius: 10px; 
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-    } 
-    .highlight-wrap[data-rel] ::before { 
-      color: white; 
-      content: attr(data-rel); 
-      height: 38px; 
-      line-height: 38px; 
-      background: #21252b; 
-      color: #fff; 
-      font-size: 16px; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      font-family: 'Source Sans Pro', sans-serif; 
-      font-weight: bold; 
-      padding: 0px 80px; 
-      text-indent: 15px; 
-      float: left; 
-    } 
-    .highlight-wrap[data-rel] ::after { 
-      content: " "; 
-      position: absolute; 
-      -webkit-border-radius: 50%; 
-      border-radius: 50%; 
-      background: #fc625d; 
-      width: 12px; 
-      height: 12px; 
-      top: 0; 
-      left: 20px; 
-      margin-top: 13px; 
-      -webkit-box-shadow: 20px 0px #fdbc40, 40px 0px #35cd4b; 
-      box-shadow: 20px 0px #fdbc40, 40px 0px #35cd4b; 
-      z-index: 3; 
-    } 
-    .highlight-wrap[data-rel] pre { 
-      margin: 0; 
-      padding: 40px 0 10px; 
-    }
+  /* mac panel */
+  .highlight-wrap[data-rel] {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px 0px rgba(0, 0, 0, 0.4);
+    margin: 35px 0;
+  }
+  .highlight-wrap[data-rel] ::-webkit-scrollbar {
+    height: 10px;
+  }
+  .highlight-wrap[data-rel] ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  .highlight-wrap[data-rel] ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+  .highlight-wrap[data-rel] ::before {
+    color: white;
+    content: attr(data-rel);
+    height: 38px;
+    line-height: 38px;
+    background: #21252b;
+    color: #fff;
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+    padding: 0px 80px;
+    text-indent: 15px;
+    float: left;
+  }
+  .highlight-wrap[data-rel] ::after {
+    content: ' ';
+    position: absolute;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #fc625d;
+    width: 12px;
+    height: 12px;
+    top: 0;
+    left: 20px;
+    margin-top: 13px;
+    -webkit-box-shadow: 20px 0px #fdbc40, 40px 0px #35cd4b;
+    box-shadow: 20px 0px #fdbc40, 40px 0px #35cd4b;
+    z-index: 3;
+  }
+  .highlight-wrap[data-rel] pre {
+    margin: 0;
+    padding: 40px 0 10px;
+  }
   ```
 - 全部配置完毕，运行`hexo s`，查看运行效果，基本上就已经完成了(css 细节自行调节)
 

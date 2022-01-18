@@ -7,7 +7,7 @@ categories:
 tags: 
 	-	算法
 slug: algorithm-covertz
-thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
+thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: 肝算法第一天
 ---
 
@@ -97,21 +97,21 @@ remainder(余数) 若小于 row， 则 s[i] 可以插入 res[i] 中；
 
 ```js
 function convert(s, row) {
-	// 所有行数组
-	const res = Array.from(Array(row), () => Array(s.length));
-	const cycle = 2 * row - 2;
+  // 所有行数组
+  const res = Array.from(Array(row), () => Array(s.length));
+  const cycle = 2 * row - 2;
 
-	for (let i = 0, len = s.length; i < len; i++) {
-		const remainder = i % cycle;
+  for (let i = 0, len = s.length; i < len; i++) {
+    const remainder = i % cycle;
 
-		if (remainder < cycle) {
-			res[remainder].push(s[i]);
-		} else {
-			res[cycle - remainder].push(s[i]);
-		}
-	}
+    if (remainder < cycle) {
+      res[remainder].push(s[i]);
+    } else {
+      res[cycle - remainder].push(s[i]);
+    }
+  }
 
-	return res.reduce((str, arr) => `${str}${arr.join("")}`, "");
+  return res.reduce((str, arr) => `${str}${arr.join('')}`, '');
 }
 ```
 
@@ -123,25 +123,25 @@ function convert(s, row) {
 
 ```js
 function convert(s, row) {
-	const res = Array.from(Array(row), () => Array(s.length));
-	const cycle = 2 * row - 2;
+  const res = Array.from(Array(row), () => Array(s.length));
+  const cycle = 2 * row - 2;
 
-	let flag = -1;
-	let rowIdx = 0;
+  let flag = -1;
+  let rowIdx = 0;
 
-	for (let i = 0, len = s.length; i < len; i++) {
-		res[rowIdx].push(s[i]);
+  for (let i = 0, len = s.length; i < len; i++) {
+    res[rowIdx].push(s[i]);
 
-		// 周期结束后 flag 取反， 左上 -> 左下 flag 为 1； 左下 -> 下列上 flag 为 -1
-		if (rowIdx === 0 || rowIdx === row - 1) {
-			flag = -flag;
-		}
+    // 周期结束后 flag 取反， 左上 -> 左下 flag 为 1； 左下 -> 下列上 flag 为 -1
+    if (rowIdx === 0 || rowIdx === row - 1) {
+      flag = -flag;
+    }
 
-		// rowIdx 在左下 -> 下列上的路线中，会再变为 0
-		rowIdx = rowIdx + flag;
-	}
+    // rowIdx 在左下 -> 下列上的路线中，会再变为 0
+    rowIdx = rowIdx + flag;
+  }
 
-	return res.reduce((str, arr) => `${str}${arr.join("")}`, "");
+  return res.reduce((str, arr) => `${str}${arr.join('')}`, '');
 }
 ```
 
@@ -191,26 +191,26 @@ cycle - 2 * i   2 * i   cycle - 2 * i
 
 ```js
 function convert(s, row) {
-	const cycle = 2 * row - 2; //  周期
-	let nextIdx = 0; //  每行下个元素的下标
-	let offset = 0; //  交替变化的元素间距
-	let res = "";
+  const cycle = 2 * row - 2; //  周期
+  let nextIdx = 0; //  每行下个元素的下标
+  let offset = 0; //  交替变化的元素间距
+  let res = '';
 
-	for (let i = 0; i < row; i++) {
-		// 下一行的起始 i
-		nextIdx = i;
-		offset = 2 * i;
+  for (let i = 0; i < row; i++) {
+    // 下一行的起始 i
+    nextIdx = i;
+    offset = 2 * i;
 
-		while (nextIdx < s.length) {
-			res += s[nextIdx];
-			// 这是最精巧的一步，offset会交替变为 2 * i 或 cycle - 2 * i
-			offset = cycle - offset;
-			// 当前行是第一行或最后一行
-			nextIdx += i === 0 || i === row - 1 ? step : offset;
-		}
-	}
+    while (nextIdx < s.length) {
+      res += s[nextIdx];
+      // 这是最精巧的一步，offset会交替变为 2 * i 或 cycle - 2 * i
+      offset = cycle - offset;
+      // 当前行是第一行或最后一行
+      nextIdx += i === 0 || i === row - 1 ? step : offset;
+    }
+  }
 
-	return res;
+  return res;
 }
 ```
 

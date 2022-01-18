@@ -8,7 +8,7 @@ categories:
 tags: 
 	-	算法
 slug: algorithm-reomveNodeFromEnd
-thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
+thumbnail: ../cover/wallhaven-l32e32.jpeg
 ---
 
 ## 题目
@@ -40,15 +40,15 @@ thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
 
 ```ts
 interface ListNode {
-	value: number;
-	next: ListNode | null;
+  value: number;
+  next: ListNode | null;
 }
 ```
 
 ```js
 function ListNode(val, next) {
-	this.val = val === undefined ? 0 : val;
-	this.next = next === undefined ? null : next;
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
 }
 ```
 
@@ -70,23 +70,23 @@ A -> B -> C -> D -> E -> F
 
 ```js
 function removeNthFromEnd(list, n) {
-	// 加入了起点占位节点
-	let curr = list;
-	let pre = list;
-	let i = 1;
+  // 加入了起点占位节点
+  let curr = list;
+  let pre = list;
+  let i = 1;
 
-	while (curr.next) {
-		if (i > n) {
-			pre = pre.next;
-		}
+  while (curr.next) {
+    if (i > n) {
+      pre = pre.next;
+    }
 
-		curr = curr.next;
-		i++;
-	}
+    curr = curr.next;
+    i++;
+  }
 
-	pre.next = pre.next.next;
+  pre.next = pre.next.next;
 
-	return list.val;
+  return list.val;
 }
 ```
 

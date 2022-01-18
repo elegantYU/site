@@ -4,9 +4,14 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 
 const BlogGrid = ({ data, style }) => {
   const {
-    frontmatter: { title, date, categories, excerpt },
+    frontmatter: {
+      title,
+      date,
+      categories,
+      excerpt,
+      thumbnail: { childImageSharp },
+    },
     fields: { slug },
-    cover: { childImageSharp },
   } = data;
 
   return (

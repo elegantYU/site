@@ -143,17 +143,16 @@ export const pageQuery = graphql`
           tags
           title
           date(formatString: "MMMM DD,YYYY")
-          thumbnail
+          thumbnail {
+            childImageSharp {
+              gatsbyImageData(jpgOptions: { progressive: true, quality: 90 })
+            }
+          }
           excerpt
           categories
         }
         fields {
           slug
-        }
-        cover {
-          childImageSharp {
-            gatsbyImageData(jpgOptions: { progressive: true, quality: 90 })
-          }
         }
       }
       totalCount

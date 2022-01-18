@@ -1,13 +1,13 @@
 ---
-title: "打印dom🌲"
+title: '打印dom🌲'
 date: 2021-08-04 11:17:14
 template: post
 categories:
   - 算法
-tags: 
+tags:
   - DFS && BFS
 slug: algorithm-printDomTree
-thumbnail: https://i.loli.net/2021/11/14/ThrHOXw2AsKtIG6.png
+thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: 好友所在厂面试题，是谁我不说~
 ---
 
@@ -16,7 +16,7 @@ excerpt: 好友所在厂面试题，是谁我不说~
 页面有如下 dom 标签，如何按照结构输出以下排列的标签名
 
 ```js
-dom: 
+dom:
 
 <header>
   <logo />
@@ -35,7 +35,7 @@ dom:
   </article>
 </section>
 
-输出: 
+输出:
 header
 logo
 nav
@@ -56,18 +56,18 @@ div
 获取标签名后输出，代码如下
 
 ```js
-function DFStree (root = document.body) {
-  const children = Array.from(root.children)
+function DFStree(root = document.body) {
+  const children = Array.from(root.children);
 
   if (children.length) {
-    for(let i = 0; i < children.length; i++) {
-      const el = children[i]
-      console.log(el.tagName)
-      DFStree(el)
+    for (let i = 0; i < children.length; i++) {
+      const el = children[i];
+      console.log(el.tagName);
+      DFStree(el);
     }
   }
 
-  return
+  return;
 }
 ```
 
@@ -76,15 +76,15 @@ function DFStree (root = document.body) {
 如果输出顺序改一下呢
 
 ```js
-header
-aside
-section
-logo
-nav
-article
-ul
-div
-li
+header;
+aside;
+section;
+logo;
+nav;
+article;
+ul;
+div;
+li;
 ```
 
 即 BFS 广度优先遍历，how？
@@ -93,22 +93,22 @@ li
 
 ```js
 function BFStree(root = document.body) {
-  const list = []
-  const children = Array.from(root.children)
+  const list = [];
+  const children = Array.from(root.children);
 
-  children.map(v => list.push(v))
+  children.map((v) => list.push(v));
 
-  let idx = 0
-  while(idx < list.length) {
-    const el = list[idx]
-    const { tagName, className } = el
-    console.log(`${tagName} --- ${className}`)
+  let idx = 0;
+  while (idx < list.length) {
+    const el = list[idx];
+    const { tagName, className } = el;
+    console.log(`${tagName} --- ${className}`);
 
     if (el.children.length) {
-      list.push(...Array.from(el.children))
+      list.push(...Array.from(el.children));
     }
 
-    idx++
+    idx++;
   }
 }
 ```

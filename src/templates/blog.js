@@ -13,8 +13,7 @@ const Blog = ({ data }) => {
   const {
     mdx: {
       body,
-      cover,
-      frontmatter: { title, categories, excerpt, date, slug },
+      frontmatter: { title, categories, excerpt, date, slug, thumbnail },
     },
   } = data;
   const gitalkConfig = {
@@ -45,7 +44,7 @@ const Blog = ({ data }) => {
             <section className='blog-desc'>{excerpt}</section>
           </div>
           <div className='blog-banner'>
-            <GatsbyImage image={cover.childImageSharp.gatsbyImageData} alt={title} />
+            <GatsbyImage image={thumbnail.childImageSharp.gatsbyImageData} alt={title} />
           </div>
           <div className='markdown-body'>
             <MDXRenderer>{body}</MDXRenderer>
@@ -68,10 +67,10 @@ export const pageQuery = graphql`
         excerpt
         categories
         date(formatString: "MMMM DD, YYYY")
-      }
-      cover {
-        childImageSharp {
-          gatsbyImageData(jpgOptions: { progressive: true, quality: 90 })
+        thumbnail {
+          childImageSharp {
+            gatsbyImageData(jpgOptions: { progressive: true, quality: 90 })
+          }
         }
       }
     }

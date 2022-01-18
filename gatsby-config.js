@@ -1,5 +1,5 @@
-const config = require('./config')
-const proxy = require('http-proxy-middleware')
+const config = require('./config');
+const proxy = require('http-proxy-middleware');
 
 module.exports = {
   siteMetadata: {
@@ -8,7 +8,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sass',
-    'gatsby-plugin-image',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
@@ -23,17 +22,6 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
-    {
-      resolve: 'gatsby-plugin-sharp',
-      options: {
-        defaults: {
-          quality: 70,
-          formats: ['auto', 'webp', 'avif'],
-          placeholder: 'blurred',
-        },
-      },
-    },
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -70,33 +58,39 @@ module.exports = {
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 800,
-            },
-          },
-          {
             resolve: 'gatsby-remark-prismjs',
             options: {
               languageExtensions: [
                 {
-                  language: "vue",
-                  extend: "javascript",
+                  language: 'vue',
+                  extend: 'javascript',
                   definition: {
                     vue_types: /(VueType)/,
                   },
                 },
               ],
-            }
+            },
           },
         ],
       },
     },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-image',
     {
-      resolve: "gatsby-plugin-gitalk",
+      resolve: 'gatsby-plugin-sharp',
       options: {
-        config: config.gitalk
-      }
-    }
+        defaults: {
+          quality: 70,
+          formats: ['auto', 'webp', 'avif'],
+          placeholder: 'blurred',
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-gitalk',
+      options: {
+        config: config.gitalk,
+      },
+    },
   ],
 };
