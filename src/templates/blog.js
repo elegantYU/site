@@ -41,7 +41,7 @@ const Blog = ({ data }) => {
               <p className='blog-header-detail-date'>{date}</p>
             </div>
             <section className='blog-title'>{title}</section>
-            <section className='blog-desc'>{excerpt}</section>
+            {/* <section className='blog-desc'>{excerpt}</section> */}
           </div>
           <div className='blog-banner'>
             <GatsbyImage image={thumbnail.childImageSharp.gatsbyImageData} alt={title} />

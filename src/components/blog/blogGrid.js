@@ -21,15 +21,15 @@ const BlogGrid = ({ data, style }) => {
       </Link>
 
       <div className='blog-grid-detail'>
+        <Link className='blog-grid-title' to={slug}>
+          {title}
+        </Link>
         <div className='blog-grid-desc'>
           <span className='blog-grid-tag'>{categories[0]}</span>
           <span className='blog-grid-point'></span>
           <span className='blog-grid-date'>{date}</span>
         </div>
-        <Link className='blog-grid-title' to={slug}>
-          {title}
-        </Link>
-        <div className='blog-grid-excerpt'>{excerpt}</div>
+        {/* <div className='blog-grid-excerpt'>{excerpt}</div> */}
       </div>
     </div>
   );

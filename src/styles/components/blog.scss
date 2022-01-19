@@ -1,4 +1,4 @@
-$wrapper-content-width: 720px;
+$wrapper-content-width: 800px;
 $sidebar-width: 380px;
 
 .blog-elastic-container {
@@ -39,7 +39,7 @@ $sidebar-width: 380px;
 
 .blog-header {
   max-width: $wrapper-content-width;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
   opacity: 0;
   animation: fade 0.2s linear 0.3s forwards, slideUp 0.2s linear forwards;
 
@@ -65,7 +65,7 @@ $sidebar-width: 380px;
 
   .blog-title {
     font-size: 3.333333rem;
-    font-weight: 500;
+    font-weight: 800;
     color: var(--blog-head-title);
     margin-bottom: 10px;
   }
@@ -77,11 +77,12 @@ $sidebar-width: 380px;
 }
 
 .blog-banner {
+  max-width: $wrapper-content-width;
   height: 480px;
   border-radius: $border-radius-large;
   overflow: hidden;
   cursor: default;
-  margin-bottom: 60px;
+  margin: 0 auto 20px;
   opacity: 0;
   animation: fade 0.2s linear 0.15s forwards, slideUp 0.2s linear 0.15s forwards;
 

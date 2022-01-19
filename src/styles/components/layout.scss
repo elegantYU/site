@@ -21,9 +21,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--body-bg);
   z-index: 1024;
-  box-shadow: inset 0px -1px 0px var(--nav-border);
 
   @include small-breakpoint {
     position: relative;

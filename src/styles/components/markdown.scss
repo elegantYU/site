@@ -1,6 +1,6 @@
 .markdown-body {
-  line-height: 2;
-  font-size: 1.333rem;
+  font-size: 1.5rem;
+  line-height: 1.95;
 }
 
 .markdown-body::before {
@@ -55,9 +55,7 @@
 .markdown-body pre,
 .markdown-body details {
   margin-top: 0;
-  margin-bottom: 1.2em;
-  font-size: 1.5rem;
-  line-height: 1.95;
+  margin-bottom: 1em;
 }
 
 .markdown-body hr {
@@ -97,9 +95,10 @@
 .markdown-body h5,
 .markdown-body h6 {
   margin-top: 24px;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.5em;
   font-weight: 600;
   line-height: 1.25;
+  color: var(--md-blod-color);
 }
 
 .markdown-body h1 .octicon-link,
@@ -147,16 +146,6 @@
   font-size: inherit;
 }
 
-.markdown-body h1 {
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid var(--md-border);
-}
-
-.markdown-body h2 {
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid var(--md-border);
-}
-
 .markdown-body h6 {
   color: var(--md-h5);
 }
@@ -194,14 +183,6 @@
 .markdown-body ol ul {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.markdown-body li > p {
-  margin-top: 16px;
-}
-
-.markdown-body li + li {
-  margin-top: 0.25em;
 }
 
 .markdown-body dl {
