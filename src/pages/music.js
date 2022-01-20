@@ -12,60 +12,6 @@ const mock = [
     pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
     author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
   },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
-  {
-    name: '百年孤寂',
-    album: '只爱陌生人',
-    pic: 'http://p4.music.126.net/EMaPiyf7GOhu8bcc1Fd63w==/109951166214524967.jpg',
-    author: { name: '王菲', avatar: 'http://p2.music.126.net/1KQVD6XWbs5IAV0xOj1ZIA==/18764265441342019.jpg' },
-  },
 ];
 
 const Music = () => {
@@ -74,7 +20,10 @@ const Music = () => {
   const [currentSong, setCurrentSong] = useState(null);
 
   const init = async () => {
-    const { data } = await getMusicListXHR(musicParams);
+    const {
+      data: { data },
+    } = await getMusicListXHR(musicParams);
+    setList(data);
     console.log('data', data);
   };
 

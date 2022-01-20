@@ -51,7 +51,11 @@ const addSiblingNodes = (createNodeField) => {
   }
 };
 
-exports.onCreateNode = async ({ node, actions: { createNodeField, createNode }, getNode }) => {
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+};
+
+exports.onCreateNode = async ({ node, actions: { createNodeField }, getNode }) => {
   let slug;
 
   if (node.internal.type === 'Mdx') {
@@ -89,6 +93,7 @@ exports.onCreateNode = async ({ node, actions: { createNodeField, createNode }, 
   }
 };
 
+// 对 graphql 存在的类型创建新字段
 exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
   const { name } = type;
   const { createNodeField } = actions;
