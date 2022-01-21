@@ -1,43 +1,50 @@
 /*
  * @Date: 2021-07-02 14:24:21
  * @LastEditors: elegantYu
- * @LastEditTime: 2021-09-30 15:20:12
+ * @LastEditTime: 2022-01-21 16:16:12
  * @Description: IntersectionObserver 做图片懒加载 hook
  */
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { loadImage } from '../utils';
 
-const useLazy = ({ refs }) => {
-	const [loaded, setLoaded] = useState(false);
+const useLazy = () => {
+  const imgEl = useRef(null);
+  const [start, setStart] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
-	const instance = new IntersectionObserver(
-		async (entries) => {
-			const [item] = entries;
-			if (item.intersectionRatio <= 0) return;
+  const instance = new IntersectionObserver(
+    async (entries) => {
+      const [item] = entries;
+      if (item.intersectionRatio <= 0) return;
 
-			const { target } = item;
-			const { src } = target.dataset;
+      const { target } = item;
+      const { src } = target.dataset;
 
-			loadImage(src)
-				.then(() => {
-					target.src = src;
-					instance.unobserve(target);
-					setLoaded(true);
-				})
-				.catch(() => {
-					instance.unobserve(target);
-					setLoaded(true);
-				});
-		},
-		{ threshold: [0.01] },
-	);
+      loadImage(src)
+        .then(() => {
+          target.src = src;
+        })
+        .finally(() => {
+          instance.unobserve(target);
+          setLoaded(true);
+        });
+    },
+    { threshold: [0.01], rootMargin: '40px 0px 0px 0px' },
+  );
 
-	const onload = () => instance.observe(refs.current);
+  const onload = () => setStart(true);
 
-	return {
-		onload,
-		loaded,
-	};
+  useEffect(() => {
+    if (imgEl.current && start) {
+      instance.observe(imgEl.current);
+    }
+  }, [imgEl.current, start]);
+
+  return {
+    imgEl,
+    onload,
+    loaded,
+  };
 };
 
 export default useLazy;

@@ -51,10 +51,6 @@ const addSiblingNodes = (createNodeField) => {
   }
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
-};
-
 exports.onCreateNode = async ({ node, actions: { createNodeField }, getNode }) => {
   let slug;
 

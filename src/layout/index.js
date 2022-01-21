@@ -9,7 +9,7 @@ import favicon from '../images/favicon.png';
 import '../styles/main.scss';
 
 const Layout = ({ children, ...rest }) => {
-  const { dark } = useContext(ThemeContext);
+  const { dark, toggleTheme } = useContext(ThemeContext);
   const darkClass = dark ? 'dark' : '';
   const iconfontCss = `https://at.alicdn.com/t/${config.iconfont}.css`;
   const iconfontJs = `https://at.alicdn.com/t/${config.iconfont}.js`;

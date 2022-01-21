@@ -14,3 +14,28 @@ export const moveToView = (el) => {
 
   el.scrollIntoView({ behavior: 'smooth', block: 'center' });
 };
+
+// 生活需要色彩
+export const randomColor = () => {
+  const colorList = [
+    '#CCFFFF',
+    '#CCFF66',
+    '#FFCCCC',
+    '#CC3333',
+    '#CCCCFF',
+    '#FF99CC',
+    '#99CCFF',
+    '#66CCFF',
+    '#FF6600',
+    '#339999',
+    '#CCCC99',
+    '#336699',
+    '#FFFF66',
+    '#0099CC',
+    '#CCCCCC',
+    '#003300',
+    '#FF9966',
+  ];
+
+  return colorList[Math.floor(Math.random() * colorList.length)];
+};

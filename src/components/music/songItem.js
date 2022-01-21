@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+
+import LazyImage from '../lazyImage';
 
 const SongItem = ({ data }) => {
   const { name, cover, album, artists } = data;
@@ -7,8 +8,7 @@ const SongItem = ({ data }) => {
   return (
     <section className='song-item'>
       <div className='song-item-pic'>
-        {/* <StaticImage src={cover} alt={album.name} /> */}
-        <img src={cover} />
+        <LazyImage src={cover} />
       </div>
       <div className='song-item-detail'>
         <h5>{name}</h5>
