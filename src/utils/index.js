@@ -39,3 +39,11 @@ export const randomColor = () => {
 
   return colorList[Math.floor(Math.random() * colorList.length)];
 };
+
+// 插入样式
+export const insertCss = (text, id) => {
+  const style = document.createElement('style');
+  style.id = id;
+  style.innerText = text;
+  document.head.append(style);
+};

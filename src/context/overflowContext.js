@@ -1,10 +1,16 @@
 // 控制页面是否 100%
 import React, { createContext, useState, useEffect } from 'react';
+import { insertCss } from '../utils';
+
+const ID = 'OVERFLOW_STYLE';
 
 const changePageOverflow = () => {
-  const style = 'height: 100%;';
+  const style = `
+    body {height: 100%;overflow: hidden;}
+    #___gatsby {height: 100%;overflow: hidden;}
+  `;
 
-  document.body;
+  insertCss(style, ID);
 };
 
 const OverContext = createContext();
@@ -14,13 +20,11 @@ export const OverProvider = ({ children }) => {
 
   const toggleFull = (f) => setFull(f);
 
-  useEffect(() => {}, [isFull]);
+  useEffect(() => {
+    changePageOverflow();
+  }, [isFull]);
 
-  return (
-    <OverContext.Provider value={{ isFull }} toggleFull={toggleFull}>
-      {children}
-    </OverContext.Provider>
-  );
+  return <OverContext.Provider value={{ isFull, toggleFull }}>{children}</OverContext.Provider>;
 };
 
 export default OverContext;

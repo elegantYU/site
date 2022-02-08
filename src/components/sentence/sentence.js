@@ -2,8 +2,8 @@ import React from 'react';
 import moment from 'moment/min/moment.min';
 
 const Sentence = ({ data, style }) => {
-  const { _id, title, content, createTime, latest } = data;
-  const date = moment(createTime).format('MMM DD HH:mm');
+  const { title, content, createTime } = data;
+  const date = moment(createTime).format('Y/M/D HH:mm');
 
   return (
     <section className='sentence-box' style={style}>
