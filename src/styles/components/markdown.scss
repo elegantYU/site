@@ -70,14 +70,11 @@
   padding: 0 1em;
   color: var(--md-blockquote);
   border-left: 0.25em solid var(--md-blockquote-border);
-}
 
-.markdown-body blockquote > :first-child {
-  margin-top: 0;
-}
-
-.markdown-body blockquote > :last-child {
-  margin-bottom: 0;
+  p {
+    margin: 0;
+    font-size: 1.4rem;
+  }
 }
 
 .markdown-body sup > a::before {

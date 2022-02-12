@@ -161,7 +161,11 @@ exports.createPages = async ({ graphql, actions, getNode, reporter }) => {
                 },
               );
               reporter.info(`create issue: ${slug}`);
-              await GitalkPluginHelper.createIssue(issueOptions);
+              try {
+                await GitalkPluginHelper.createIssue(issueOptions);
+              } catch (error) {
+                console.log('抛错抛错', error);
+              }
             }
           }
         });
