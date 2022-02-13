@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getPageListXHR } from '../api/sentence';
 import toast, { Toaster } from 'react-hot-toast';
 
-import Layout from '../layout';
 import Seo from '../components/SEO';
 import Title from '../components/sentence/title';
 import Sentence from '../components/sentence/sentence';
@@ -70,14 +69,14 @@ const Daily = () => {
   }, [pageParams]);
 
   return (
-    <Layout>
+    <>
       <Seo />
       <div id='sentence'>
         <Title data={verseList} />
         <section className='sentence-list'>{renderSentenceJSX(dailyData)}</section>
       </div>
       <Toaster position='bottom-center' toastOptions={{ className: 'toast-my', duration: 2000 }} />
-    </Layout>
+    </>
   );
 };
 

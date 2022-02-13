@@ -92,5 +92,6 @@ module.exports = {
         config: config.gitalk,
       },
     },
+    'gatsby-plugin-layout',
   ],
 };

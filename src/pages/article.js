@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import { moveToView } from '../utils';
 
-import Layout from '../layout';
 import Seo from '../components/SEO';
 import BlogGrid from '../components/blog/blogGrid';
 
@@ -113,7 +112,7 @@ const Article = ({ data }) => {
   }, []);
 
   return (
-    <Layout>
+    <>
       <Seo />
       <div id='article'>
         <div className='article-search'>
@@ -130,7 +129,7 @@ const Article = ({ data }) => {
           </section>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 

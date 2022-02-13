@@ -42,6 +42,8 @@ export const randomColor = () => {
 
 // 插入样式
 export const insertCss = (text, id) => {
+  if (document.getElementById(id)) return;
+
   const style = document.createElement('style');
   style.id = id;
   style.innerText = text;

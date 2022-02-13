@@ -164,7 +164,7 @@ exports.createPages = async ({ graphql, actions, getNode, reporter }) => {
               try {
                 await GitalkPluginHelper.createIssue(issueOptions);
               } catch (error) {
-                console.log('抛错抛错', error);
+                console.log('抛错抛错');
               }
             }
           }

@@ -3,7 +3,7 @@ import { graphql, useScrollRestoration } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-import Layout from '../layout';
+import Layout from '../layouts';
 import Seo from '../components/SEO';
 import Sidebar from '../components/blog/sidebar';
 
