@@ -9,6 +9,7 @@ tags:
 categories:
 	-	Git
 excerpt: 装杯做好打脸的准备...
+pwd: 
 ---
 
 > 记一次尴尬的提交...

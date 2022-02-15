@@ -9,6 +9,7 @@ tags:
 slug: add-two-numbers
 thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: 写点啥呢
+pwd: 
 ---
 
 # 两数相加 - 2

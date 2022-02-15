@@ -82,8 +82,6 @@ const Article = ({ data }) => {
       setTimeout(() => {
         inputEl.current.focus();
       }, 1000);
-    } else {
-      console.log('notify 引导点击 Slash');
     }
   };
 
@@ -139,6 +137,7 @@ export const pageQuery = graphql`
       nodes {
         id
         frontmatter {
+          pwd
           tags
           title
           date(formatString: "MMMM DD,YYYY")

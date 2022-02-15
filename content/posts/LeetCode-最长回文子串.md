@@ -9,6 +9,7 @@ tags:
 slug: longest-palindromic-substring
 thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: 啥写点呢
+pwd: 
 ---
 
 # 最长回文子串 - 5

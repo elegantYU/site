@@ -9,6 +9,7 @@ tags:
 slug: algorithm-covertz
 thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: 肝算法第一天
+pwd: 
 ---
 
 ## 题目

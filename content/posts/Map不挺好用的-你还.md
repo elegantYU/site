@@ -9,6 +9,7 @@ tags:
 slug: es6-map
 thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: 闲来无事水一篇。
+pwd: 
 ---
 
 ## Map?

@@ -6,6 +6,7 @@ const BlogGrid = ({ data, style }) => {
   const {
     frontmatter: {
       title,
+      pwd,
       date,
       categories,
       excerpt,

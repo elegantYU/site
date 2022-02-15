@@ -9,6 +9,7 @@ thumbnail: ../cover/wallhaven-l32e32.jpeg
 categories:
 	-	游戏
 excerpt: CyberPunk || BugPunk
+pwd: 
 ---
 
 > "赛博朋克 2077 真的是 2020 年我玩过的最精彩的游戏" —— ElegantYU

@@ -9,6 +9,7 @@ tags:
 slug: algorithm-printDomTree
 thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: 好友所在厂面试题，是谁我不说~
+pwd:
 ---
 
 ## 题目

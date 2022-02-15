@@ -11,6 +11,7 @@ thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt: |
   此篇博客乃在下历时月许，拖沓至今才准备出的 hexo+github 搭建博客教学。
   从头至尾皆是本人的亲生体会，希望对大家有所借鉴和帮助
+pwd: 
 ---
 
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
