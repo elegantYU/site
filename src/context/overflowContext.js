@@ -6,8 +6,8 @@ const OVERFLOW_STYLE = 'OVERFLOW_STYLE';
 
 const setPageOverflow = () => {
   const style = `
-    body {height: 100%;overflow: hidden;}
-    #___gatsby {height: 100%;overflow: hidden;}
+    body, #___gatsby{height: 100%;overflow: hidden;}
+    #main{height: calc(100% - 80px);}
   `;
 
   insertCss(style, OVERFLOW_STYLE);

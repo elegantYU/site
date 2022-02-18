@@ -1,8 +1,13 @@
 #music {
   max-width: $large;
+  height: 100%;
   margin: 0 auto;
 }
 
+.list-wrap {
+  height: 100%;
+  overflow: auto;
+}
 .music-list {
   padding: 0 20px;
 }
@@ -17,7 +22,7 @@
   align-items: center;
   gap: 20px;
   cursor: pointer;
-  filter: opacity(0.65);
+  filter: opacity(0.75);
 
   &:hover,
   &.active {

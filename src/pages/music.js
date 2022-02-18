@@ -31,7 +31,10 @@ const Music = () => {
     <>
       <Seo />
       <div id='music'>
-        <section className='music-list'>{renderItemJSX()}</section>
+        <div className='music-box'></div>
+        <section className='list-wrap'>
+          <section className='music-list'>{renderItemJSX()}</section>
+        </section>
       </div>
     </>
   );
