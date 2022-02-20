@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql, useScrollRestoration } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-import Layout from '../layouts';
 import Seo from '../components/SEO';
 import Sidebar from '../components/blog/sidebar';
 
-const Blog = ({ data }) => {
+const Blog = ({ data, location }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const blogRestoration = useScrollRestoration('blog');
   const {
     mdx: {
       body,
-      frontmatter: { title, categories, excerpt, date, slug, thumbnail },
+      frontmatter: { title, categories, excerpt, date, slug, thumbnail, pwd },
     },
   } = data;
   const gitalkConfig = {
@@ -26,8 +25,18 @@ const Blog = ({ data }) => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const checkPwdState = () => {
+    // 列表页进入或有永久令牌
+    if (pwd && location.state.hasPass) {
+    }
+  };
+
+  useEffect(() => {
+    checkPwdState();
+  }, []);
+
   return (
-    <Layout>
+    <>
       <Seo title={title} description={excerpt} />
       <div className={elasticClass} {...blogRestoration}>
         <button className='temp-btn' onClick={switchSidebarStatus}>
@@ -52,7 +61,7 @@ const Blog = ({ data }) => {
         </div>
         <Sidebar data={gitalkConfig} active={sidebarOpen} />
       </div>
-    </Layout>
+    </>
   );
 };
 

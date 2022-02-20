@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-const BlogGrid = ({ data, style }) => {
+const BlogGrid = ({ data, style, showPwdModal }) => {
   const {
     frontmatter: {
       title,
@@ -15,16 +15,25 @@ const BlogGrid = ({ data, style }) => {
     fields: { slug },
   } = data;
 
+  const beforeNavigate = () => {
+    if (!pwd) {
+      console.log('slug', slug);
+      return navigate(slug);
+    }
+
+    showPwdModal({ pwd, slug });
+  };
+
   return (
     <div className='blog-grid' style={style}>
-      <Link className='blog-grid-cover' to={slug}>
+      <div className='blog-grid-cover' onClick={beforeNavigate}>
         <GatsbyImage image={childImageSharp.gatsbyImageData} alt='' />
-      </Link>
+      </div>
 
       <div className='blog-grid-detail'>
-        <Link className='blog-grid-title' to={slug}>
+        <div className='blog-grid-title' onClick={beforeNavigate}>
           {title}
-        </Link>
+        </div>
         <div className='blog-grid-desc'>
           <span className='blog-grid-tag'>{categories[0]}</span>
           <span className='blog-grid-point'></span>

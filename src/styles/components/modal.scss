@@ -1,0 +1,196 @@
+$comfort-margin: 40px;
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1024;
+}
+
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0;
+
+  &.in {
+    animation: fadeIn 0.3s ease-in forwards;
+  }
+  &.out {
+    animation: fadeOut 0.3s ease forwards;
+  }
+}
+
+.modal-box {
+  position: relative;
+  width: 400px;
+  margin: 18vh auto 0;
+  padding: 60px $comfort-margin $comfort-margin;
+  background-color: #fff;
+  border-radius: $border-radius-max;
+  opacity: 0;
+
+  &.in {
+    animation: slideIn 0.3s ease forwards;
+  }
+  &.out {
+    animation: slideOut 0.3s ease forwards;
+  }
+}
+
+.modal-header {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.modal-body {
+  margin-bottom: 30px;
+
+  &-input {
+    $h: 50px;
+
+    height: $h;
+    background-color: #f8f8f8;
+    border-radius: $border-radius-large;
+    overflow: hidden;
+
+    @extend %flex-center;
+
+    input {
+      height: 100%;
+      flex: 1;
+      background-color: transparent;
+      font-size: 1.2rem;
+      text-indent: 1em;
+      color: var(--article-search-font);
+    }
+
+    .iconfont {
+      width: $h;
+      height: $h;
+      color: var(--icon-search);
+
+      @extend %flex-center;
+    }
+
+    &-close {
+      font-size: 1.3rem;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease;
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+        cursor: pointer;
+      }
+    }
+
+    &.active,
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+    &.error {
+      animation: shakeit 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+    }
+  }
+}
+
+.modal-footer {
+  @extend %flex-center;
+
+  justify-content: space-between;
+  gap: $comfort-margin;
+
+  button {
+    flex: 1;
+    height: 60px;
+    border-radius: $border-radius-large;
+    box-shadow: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    &.btn-cancel {
+      background-color: #f0f4fa;
+      color: #92a0af;
+    }
+    &.btn-done {
+      background-color: #de5151;
+      color: #fff;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    margin: 18vh auto 0;
+    opacity: 0;
+  }
+  to {
+    margin: 20vh auto 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    margin: 20vh auto 0;
+    opacity: 1;
+  }
+  to {
+    margin: 18vh auto 0;
+    opacity: 0;
+  }
+}
+
+@keyframes shakeit {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

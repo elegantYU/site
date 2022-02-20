@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
+import { Toaster } from 'react-hot-toast';
 import { moveToView } from '../utils';
 
 import Seo from '../components/SEO';
 import BlogGrid from '../components/blog/blogGrid';
-
-const renderListJSX = (list) =>
-  list.map((v, i) => <BlogGrid data={v} key={v.id} style={{ animationDelay: `${i * 100}ms` }} />);
+import Modal from '../components/blog/modal';
 
 const Article = ({ data }) => {
   const {
@@ -16,6 +15,8 @@ const Article = ({ data }) => {
   const [keywords, setKeywords] = useState('');
   const [cate, setCate] = useState([]);
   const [currentCate, setCurrentCate] = useState('All');
+  const [currentInfo, setCurrentInfo] = useState('');
+  const [isModalShow, setModalShow] = useState(false);
   const inputEl = useRef(null);
   const closeClass = keywords ? 'show' : '';
 
@@ -85,6 +86,18 @@ const Article = ({ data }) => {
     }
   };
 
+  const showPwdModal = (info) => {
+    setModalShow(true);
+    setCurrentInfo(info);
+  };
+  const hidePwdModal = () => setModalShow(false);
+
+  const handleModalDone = () => {
+    navigate(currentInfo.slug, {
+      state: { hasPass: true },
+    });
+  };
+
   const renderCategoriesJSX = () =>
     cate.map((v) => (
       <div
@@ -94,6 +107,11 @@ const Article = ({ data }) => {
       >
         {v}
       </div>
+    ));
+
+  const renderListJSX = (list) =>
+    list.map((v, i) => (
+      <BlogGrid data={v} key={v.id} style={{ animationDelay: `${i * 100}ms` }} showPwdModal={showPwdModal} />
     ));
 
   useEffect(() => {
@@ -127,6 +145,8 @@ const Article = ({ data }) => {
           </section>
         )}
       </div>
+      <Modal visible={isModalShow} onCancel={hidePwdModal} onDone={handleModalDone} pwd={currentInfo.pwd} />
+      <Toaster position='bottom-center' toastOptions={{ className: 'toast-my', duration: 2000 }} />
     </>
   );
 };
