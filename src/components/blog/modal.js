@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-02-18 17:34:53
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-20 22:26:42
+ * @LastEditTime: 2022-02-22 00:07:14
  * @Description: 模态框
  */
 import React, { useState, useRef, useEffect } from 'react';
@@ -39,14 +39,14 @@ const Modal = (props) => {
       setKeyAction('');
     }
 
-    if (e.code === 'Enter' || temp === key) {
+    if (e.code === 'Enter' && temp === key) {
       handleDone();
     }
   };
 
   const handleDone = () => {
     if (err) return;
-    if (keywords == pwd || key.includes(keyAction)) {
+    if (keywords == pwd) {
       onDone?.();
       onCancel?.();
       return;
@@ -66,6 +66,12 @@ const Modal = (props) => {
     }
   };
 
+  const handleEscListener = (e) => {
+    if (e.code == 'Escape') {
+      onCancel?.();
+    }
+  };
+
   const recordErr = () => {
     const errMap = new Map([
       [5, { text: '别猜啦', icon: '😅' }],
@@ -80,6 +86,13 @@ const Modal = (props) => {
     const info = errMap.get(errCount);
     info && toast(info.text, { icon: info.icon });
   };
+
+  useEffect(() => {
+    document.body.addEventListener('keydown', handleEscListener);
+    return () => {
+      document.body.removeEventListener('keydown', handleEscListener);
+    };
+  }, []);
 
   useEffect(() => {
     recordErr();
@@ -104,31 +117,26 @@ const Modal = (props) => {
 
   return (
     <>
-      {active ? (
-        <div className='modal'>
-          <div className={`modal-mask ${modalClass}`}></div>
-          <div className={`modal-box ${modalClass}`}>
-            <div className='modal-header'>上了锁</div>
-            <div className='modal-body'>
-              <div className={`modal-body-input ${inputClass}`}>
-                <input ref={inputEl} placeholder='输入密码' onKeyUp={handleKeyup} />
-                <span
-                  className={`modal-body-input-close iconfont icon-close ${closeClass}`}
-                  onClick={handleClear}
-                ></span>
-              </div>
-            </div>
-            <div className='modal-footer'>
-              <Btn className='btn-cancel' onClick={onCancel}>
-                算了
-              </Btn>
-              <Btn className='btn-done' onClick={handleDone}>
-                试试
-              </Btn>
+      <div className={`modal ${active ? 'active' : ''}`}>
+        <div className={`modal-mask ${modalClass}`}></div>
+        <div className={`modal-box ${modalClass}`}>
+          <div className='modal-header'>上了锁</div>
+          <div className='modal-body'>
+            <div className={`modal-body-input ${inputClass}`}>
+              <input ref={inputEl} placeholder='输入密码' onKeyUp={handleKeyup} />
+              <span className={`modal-body-input-close iconfont icon-close ${closeClass}`} onClick={handleClear}></span>
             </div>
           </div>
+          <div className='modal-footer'>
+            <Btn className='btn-cancel' onClick={onCancel}>
+              算了
+            </Btn>
+            <Btn className='btn-done' onClick={handleDone}>
+              试试
+            </Btn>
+          </div>
         </div>
-      ) : null}
+      </div>
     </>
   );
 };

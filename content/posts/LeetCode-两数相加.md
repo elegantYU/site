@@ -7,7 +7,7 @@ categories:
 tags: 
 	-	算法
 slug: add-two-numbers
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-nkl710.jpg
 excerpt: 写点啥呢
 pwd: 
 ---

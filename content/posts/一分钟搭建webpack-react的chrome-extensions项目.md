@@ -7,7 +7,7 @@ categories:
 tags: 
 	-	插件
 slug: webpack+react
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-j31pym.png
 excerpt: 嘿嘿嘿
 pwd: 
 ---

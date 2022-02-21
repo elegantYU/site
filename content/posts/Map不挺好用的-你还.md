@@ -7,7 +7,7 @@ categories:
 tags: 
 	-	map
 slug: es6-map
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-72jqve.jpeg
 excerpt: 闲来无事水一篇。
 pwd: 
 ---

@@ -8,7 +8,7 @@ categories:
 tags: 
 	-	css
 excerpt: 换季了，多喝热水 ☕️
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-673668.jpg
 pwd: 
 ---
 

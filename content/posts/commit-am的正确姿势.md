@@ -3,7 +3,7 @@ title: commit -am的正确姿势
 date: 2020-05-11 10:18:22
 template: post
 slug: git-commit-am
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-x8wmez.jpeg
 tags: 
 	-	git
 categories:

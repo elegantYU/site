@@ -2,7 +2,7 @@
 title: 关于git的几件小事
 date: 2021-10-24 09:57:10
 template: post
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-k71qmm.jpeg
 excerpt: 不为谁而写的文档，git 新手可看
 slug: team-git
 categories:

@@ -7,6 +7,11 @@ $comfort-margin: 40px;
   left: 0;
   right: 0;
   z-index: 1024;
+  display: none;
+
+  &.active {
+    display: block;
+  }
 }
 
 .modal-mask {

@@ -8,7 +8,7 @@ categories:
 tags: 
 	-	算法
 slug: algorithm-reomveNodeFromEnd
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-nkl710.jpg
 pwd: 
 ---
 

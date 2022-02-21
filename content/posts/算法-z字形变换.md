@@ -7,7 +7,7 @@ categories:
 tags: 
 	-	算法
 slug: algorithm-covertz
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-nkl710.jpg
 excerpt: 肝算法第一天
 pwd: 
 ---

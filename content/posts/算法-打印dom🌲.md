@@ -7,7 +7,7 @@ categories:
 tags:
   - DFS && BFS
 slug: algorithm-printDomTree
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-nkl710.jpg
 excerpt: 好友所在厂面试题，是谁我不说~
 pwd:
 ---

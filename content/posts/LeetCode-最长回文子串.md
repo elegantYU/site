@@ -7,7 +7,7 @@ categories:
 tags: 
 	-	算法
 slug: longest-palindromic-substring
-thumbnail: ../cover/wallhaven-l32e32.jpeg
+thumbnail: ../cover/wallhaven-nkl710.jpg
 excerpt: 啥写点呢
 pwd: 
 ---
