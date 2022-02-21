@@ -17,6 +17,9 @@ $comfort-margin: 40px;
   height: 100%;
   background-color: #000;
   opacity: 0;
+  // will-change: opacity;
+  // perspective: 1000;
+  // backface-visibility: hidden;
 
   &.in {
     animation: fadeIn 0.3s ease-in forwards;
@@ -29,11 +32,15 @@ $comfort-margin: 40px;
 .modal-box {
   position: relative;
   width: 400px;
-  margin: 18vh auto 0;
+  margin: 20vh auto 0;
   padding: 60px $comfort-margin $comfort-margin;
-  background-color: #fff;
+  background-color: var(--modal-bg);
   border-radius: $border-radius-max;
   opacity: 0;
+  transform: translateY(-30px);
+  // will-change: transform, opacity;
+  // perspective: 1000;
+  // backface-visibility: hidden;
 
   &.in {
     animation: slideIn 0.3s ease forwards;
@@ -47,7 +54,7 @@ $comfort-margin: 40px;
   font-size: 2rem;
   font-weight: 600;
   line-height: 2;
-  color: #000;
+  color: var(--modal-title);
   margin-bottom: 30px;
 }
 
@@ -58,7 +65,7 @@ $comfort-margin: 40px;
     $h: 50px;
 
     height: $h;
-    background-color: #f8f8f8;
+    background-color: var(--article-search-bg);
     border-radius: $border-radius-large;
     overflow: hidden;
 
@@ -98,7 +105,7 @@ $comfort-margin: 40px;
 
     &.active,
     &:hover {
-      background-color: #f5f5f5;
+      background-color: var(--modal-search-bg-hover);
     }
 
     &.error {
@@ -123,12 +130,12 @@ $comfort-margin: 40px;
     cursor: pointer;
 
     &.btn-cancel {
-      background-color: #f0f4fa;
-      color: #92a0af;
+      color: var(--modal-btn-cancel);
+      background-color: var(--modal-btn-cancel-bg);
     }
     &.btn-done {
-      background-color: #de5151;
-      color: #fff;
+      color: var(--modal-btn-done);
+      background-color: var(--modal-btn-done-bg);
     }
   }
 }
@@ -152,22 +159,22 @@ $comfort-margin: 40px;
 
 @keyframes slideIn {
   from {
-    margin: 18vh auto 0;
+    transform: translateY(-30px);
     opacity: 0;
   }
   to {
-    margin: 20vh auto 0;
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
 @keyframes slideOut {
   from {
-    margin: 20vh auto 0;
+    transform: translateY(0);
     opacity: 1;
   }
   to {
-    margin: 18vh auto 0;
+    transform: translateY(-30px);
     opacity: 0;
   }
 }
