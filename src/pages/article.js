@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { graphql, navigate } from 'gatsby';
 import { Toaster } from 'react-hot-toast';
 import { moveToView } from '../utils';
@@ -86,11 +86,11 @@ const Article = ({ data }) => {
     }
   };
 
-  const showPwdModal = (info) => {
+  const showPwdModal = useCallback((info) => {
     setModalShow(true);
     setCurrentInfo(info);
-  };
-  const hidePwdModal = () => setModalShow(false);
+  }, []);
+  const hidePwdModal = useCallback(() => setModalShow(false), []);
 
   const handleModalDone = () => {
     navigate(currentInfo.slug, {

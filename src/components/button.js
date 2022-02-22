@@ -1,51 +1,36 @@
 /*
  * @Date: 2022-02-19 22:41:38
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-20 16:20:57
+ * @LastEditTime: 2022-02-22 19:22:21
  * @Description: 波纹疾走
  */
 import React, { useState, useRef, useEffect } from 'react';
+import Ripple, { calcOffset } from './ripple';
 
 const Btn = (props) => {
   const { children, ...rest } = props;
   const [isStart, setStart] = useState(false);
-  const [styleData, setStyleData] = useState({});
+  const [rippleData, setRippleData] = useState({});
   const btnEl = useRef(null);
-  const rippleClass = isStart ? 'active' : '';
-  const style = {
-    ...styleData,
-  };
 
-  const handleClick = (e) => {
-    const { clientX, clientY } = e;
-    const { left, top, width, height } = btnEl.current?.getBoundingClientRect();
-    const size = Math.max(width, height);
-    const offset = {
-      width: size,
-      height: size,
-      left: clientX - left - size / 2,
-      top: clientY - top - size / 2,
-    };
-
-    setStyleData(offset);
+  const handleMouseDown = (e) => {
+    const originData = calcOffset(e);
+    setRippleData(originData);
     setStart(true);
-
-    props?.onClick?.();
   };
 
-  useEffect(() => {
-    let timer;
-    if (isStart) {
-      timer = setTimeout(() => setStart(false), 600);
-    }
-    return () => {
-      timer && clearTimeout(timer);
-    };
-  }, [isStart]);
+  const handleMouseUp = () => setStart(false);
 
   return (
-    <button {...rest} ref={btnEl} onClick={handleClick}>
-      {isStart ? <div className={`ripple ${rippleClass}`} style={style}></div> : null}
+    <button
+      {...rest}
+      ref={btnEl}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onMouseOut={handleMouseUp}
+    >
+      <Ripple data={rippleData} active={isStart} />
       {children}
     </button>
   );

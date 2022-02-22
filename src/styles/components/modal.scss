@@ -7,11 +7,6 @@ $comfort-margin: 40px;
   left: 0;
   right: 0;
   z-index: 1024;
-  display: none;
-
-  &.active {
-    display: block;
-  }
 }
 
 .modal-mask {
@@ -20,18 +15,7 @@ $comfort-margin: 40px;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
-  opacity: 0;
-  // will-change: opacity;
-  // perspective: 1000;
-  // backface-visibility: hidden;
-
-  &.in {
-    animation: fadeIn 0.3s ease-in forwards;
-  }
-  &.out {
-    animation: fadeOut 0.3s ease forwards;
-  }
+  background-color: rgba($color: #000000, $alpha: 0.2);
 }
 
 .modal-box {
@@ -41,18 +25,6 @@ $comfort-margin: 40px;
   padding: 60px $comfort-margin $comfort-margin;
   background-color: var(--modal-bg);
   border-radius: $border-radius-max;
-  opacity: 0;
-  transform: translateY(-30px);
-  // will-change: transform, opacity;
-  // perspective: 1000;
-  // backface-visibility: hidden;
-
-  &.in {
-    animation: slideIn 0.3s ease forwards;
-  }
-  &.out {
-    animation: slideOut 0.3s ease forwards;
-  }
 }
 
 .modal-header {
@@ -74,38 +46,13 @@ $comfort-margin: 40px;
     border-radius: $border-radius-large;
     overflow: hidden;
 
-    @extend %flex-center;
-
     input {
+      width: 100%;
       height: 100%;
-      flex: 1;
       background-color: transparent;
-      font-size: 1.2rem;
-      text-indent: 1em;
-      color: var(--article-search-font);
-    }
-
-    .iconfont {
-      width: $h;
-      height: $h;
-      color: var(--icon-search);
-
-      @extend %flex-center;
-    }
-
-    &-close {
       font-size: 1.3rem;
-      pointer-events: none;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s ease;
-
-      &.show {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: all;
-        cursor: pointer;
-      }
+      text-align: center;
+      color: var(--article-search-font);
     }
 
     &.active,
@@ -142,45 +89,6 @@ $comfort-margin: 40px;
       color: var(--modal-btn-done);
       background-color: var(--modal-btn-done-bg);
     }
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.5;
-  }
-}
-@keyframes fadeOut {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-30px);
-    opacity: 0;
   }
 }
 

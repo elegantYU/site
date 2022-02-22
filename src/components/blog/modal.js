@@ -1,10 +1,11 @@
 /*
  * @Date: 2022-02-18 17:34:53
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-22 00:07:14
+ * @LastEditTime: 2022-02-22 19:19:47
  * @Description: 模态框
  */
 import React, { useState, useRef, useEffect } from 'react';
+import { animated, useTransition, easings, config } from 'react-spring';
 import toast from 'react-hot-toast';
 import Btn from '../button';
 
@@ -18,15 +19,27 @@ const key = 'ssxxzyzy';
 
 const Modal = (props) => {
   const { pwd, visible, onCancel, onDone } = props;
-  const [active, setActive] = useState(false);
   const [keywords, setKeywords] = useState('');
   const [err, setErr] = useState(false);
   const [errCount, setErrCount] = useState(0);
   const [keyAction, setKeyAction] = useState('');
   const inputEl = useRef(null);
-  const modalClass = visible ? 'in' : 'out';
   const inputClass = `${keywords ? 'active' : ''} ${err ? 'error' : ''}`;
-  const closeClass = keywords ? 'show' : '';
+
+  const rootTrans = useTransition(visible, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 300, ...config.stiff },
+    exitBeforeEnter: true,
+  });
+  const modalTrans = useTransition(visible, {
+    from: { opacity: 0, translateY: -30 },
+    enter: { opacity: 1, translateY: 0 },
+    leave: { opacity: 0, translateY: -30 },
+    config: { duration: 300, ...config.stiff },
+    exitBeforeEnter: true,
+  });
 
   const handleKeyup = (e) => {
     const { value } = inputEl.current;
@@ -99,45 +112,42 @@ const Modal = (props) => {
   }, [errCount]);
 
   useEffect(() => {
-    if (!visible) {
-      setTimeout(() => setActive(false), 300);
-    } else {
-      setActive(true);
-    }
-  }, [visible]);
-
-  useEffect(() => {
-    if (active) {
+    if (visible) {
       inputEl?.current?.focus();
     }
     return () => {
       handleClear();
     };
-  }, [active]);
+  }, [visible]);
 
-  return (
-    <>
-      <div className={`modal ${active ? 'active' : ''}`}>
-        <div className={`modal-mask ${modalClass}`}></div>
-        <div className={`modal-box ${modalClass}`}>
-          <div className='modal-header'>上了锁</div>
-          <div className='modal-body'>
-            <div className={`modal-body-input ${inputClass}`}>
-              <input ref={inputEl} placeholder='输入密码' onKeyUp={handleKeyup} />
-              <span className={`modal-body-input-close iconfont icon-close ${closeClass}`} onClick={handleClear}></span>
-            </div>
-          </div>
-          <div className='modal-footer'>
-            <Btn className='btn-cancel' onClick={onCancel}>
-              算了
-            </Btn>
-            <Btn className='btn-done' onClick={handleDone}>
-              试试
-            </Btn>
-          </div>
-        </div>
-      </div>
-    </>
+  return rootTrans(
+    (style, state) =>
+      state && (
+        <animated.div className='modal' style={style}>
+          <animated.div className='modal-mask' style={style} onClick={onCancel} />
+          {modalTrans(
+            (styles, state) =>
+              state && (
+                <animated.div className='modal-box' style={styles}>
+                  <div className='modal-header'>上了锁</div>
+                  <div className='modal-body'>
+                    <div className={`modal-body-input ${inputClass}`}>
+                      <input ref={inputEl} placeholder='输入密码' onKeyUp={handleKeyup} />
+                    </div>
+                  </div>
+                  <div className='modal-footer'>
+                    <Btn className='btn-cancel' onClick={onCancel}>
+                      算了
+                    </Btn>
+                    <Btn className='btn-done' onClick={handleDone}>
+                      试试
+                    </Btn>
+                  </div>
+                </animated.div>
+              ),
+          )}
+        </animated.div>
+      ),
   );
 };
 
