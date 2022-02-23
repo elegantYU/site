@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-02-22 16:49:56
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-22 19:32:29
+ * @LastEditTime: 2022-02-23 10:42:58
  * @Description: 这是我最后的波纹了！JOJO！
  */
 import React, { useEffect, useState } from 'react';
@@ -20,16 +20,6 @@ export const calcOffset = (e) => {
 };
 
 const Ripple = ({ data, active }) => {
-  const [style, setStyle] = useState({});
-
-  useEffect(() => {
-    if (active) {
-      setStyle(data);
-    } else {
-      setTimeout(() => setStyle({ width: 0, height: 0, left: 0, top: 0 }), 300);
-    }
-  }, [active]);
-
   return <div style={data} className={`ripple ${active ? 'active' : ''}`} />;
 };
 

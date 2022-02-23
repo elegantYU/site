@@ -6,7 +6,7 @@ html {
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
   outline: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -122,6 +122,11 @@ button,
 textarea {
   border: none;
   box-shadow: none;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
 }
 
 a {

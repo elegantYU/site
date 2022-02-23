@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-02-18 17:34:53
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-22 19:19:47
+ * @LastEditTime: 2022-02-23 20:14:12
  * @Description: 模态框
  */
 import React, { useState, useRef, useEffect } from 'react';
@@ -43,19 +43,14 @@ const Modal = (props) => {
 
   const handleKeyup = (e) => {
     const { value } = inputEl.current;
-    const temp = keyAction + arrowMap[e.code];
     setKeywords(value);
 
-    if (arrowMap[e.code] && key.includes(temp)) {
-      setKeyAction(temp);
-    } else {
-      setKeyAction('');
-    }
-
-    if (e.code === 'Enter' && temp === key) {
+    if (e.code === 'Enter') {
       handleDone();
     }
   };
+
+  const handleKeydown = (e) => {};
 
   const handleDone = () => {
     if (err) return;

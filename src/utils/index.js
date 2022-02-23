@@ -1,3 +1,5 @@
+import { STORAGE_BLOGPASS, STORAGE_TOKEN } from './constant';
+
 // 图片加载
 export const loadImage = (url) =>
   new Promise((resolve, reject) => {
@@ -48,4 +50,22 @@ export const insertCss = (text, id) => {
   style.id = id;
   style.innerText = text;
   document.head.append(style);
+};
+
+// 添加每篇文章 pass
+export const saveBlogPass = (slug) => {
+  const slugPass = JSON.parse(localStorage.getItem(STORAGE_BLOGPASS)) || [];
+
+  slugPass.push(slug);
+  localStorage.setItem(STORAGE_BLOGPASS, slugPass);
+};
+
+// 查看免密令牌
+export const checkCanPass = (slug) => {
+  const allPass = localStorage.getItem(STORAGE_TOKEN);
+  const slugPass = localStorage.getItem(STORAGE_BLOGPASS);
+
+  if (allPass || (slugPass && JSON.parse(slugPass)?.includes(slug))) return true;
+
+  return false;
 };
