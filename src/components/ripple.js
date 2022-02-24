@@ -1,10 +1,11 @@
 /*
  * @Date: 2022-02-22 16:49:56
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-23 10:42:58
+ * @LastEditTime: 2022-02-24 23:07:03
  * @Description: 这是我最后的波纹了！JOJO！
  */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { animated, useTransition, easings } from 'react-spring';
 
 export const calcOffset = (e) => {
   const { clientX, clientY } = e;
@@ -20,7 +21,14 @@ export const calcOffset = (e) => {
 };
 
 const Ripple = ({ data, active }) => {
-  return <div style={data} className={`ripple ${active ? 'active' : ''}`} />;
+  const trans = useTransition(active, {
+    from: { ...data, transform: 'scale(0)', opacity: 0 },
+    enter: { ...data, transform: 'scale(3)', opacity: 1 },
+    leave: { ...data, transform: 'scale(3)', opacity: 0 },
+    config: { duration: 400, easings: easings.easeInOutBack },
+  });
+
+  return trans((s, t) => t && <animated.div style={s} className='ripple' />);
 };
 
 export default Ripple;
