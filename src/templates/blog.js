@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { graphql, useScrollRestoration } from 'gatsby';
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
@@ -8,7 +8,6 @@ import Sidebar from '../components/blog/sidebar';
 
 const Blog = ({ data, location }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const blogRestoration = useScrollRestoration('blog');
   const {
     mdx: {
       body,
@@ -38,7 +37,7 @@ const Blog = ({ data, location }) => {
   return (
     <>
       <Seo title={title} description={excerpt} />
-      <div className={elasticClass} {...blogRestoration}>
+      <div className={elasticClass}>
         <button className='temp-btn' onClick={switchSidebarStatus}>
           开关
         </button>
