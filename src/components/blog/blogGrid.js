@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { checkCanPass } from '../../utils';
 
 const BlogGrid = ({ data, style, showPwdModal }) => {
   const {
@@ -16,8 +17,7 @@ const BlogGrid = ({ data, style, showPwdModal }) => {
   } = data;
 
   const beforeNavigate = () => {
-    if (!pwd) {
-      console.log('slug', slug);
+    if (!pwd || checkCanPass()) {
       return navigate(slug);
     }
 

@@ -1,4 +1,4 @@
-import { STORAGE_BLOGPASS, STORAGE_TOKEN } from './constant';
+import { STORAGE_BLOGPASS, STORAGE_TOKEN, SESSION_SCROLL } from './constant';
 
 // 图片加载
 export const loadImage = (url) =>
@@ -68,4 +68,28 @@ export const checkCanPass = (slug) => {
   if (allPass || (slugPass && JSON.parse(slugPass)?.includes(slug))) return true;
 
   return false;
+};
+
+// 留住体验
+export const setSessionScroll = (path) => {
+  const session = JSON.parse(sessionStorage.getItem(SESSION_SCROLL)) || [];
+  const curr = session.find((v) => v.path === path);
+  const top = document.body.scrollTop;
+
+  if (curr) {
+    curr.top = top;
+  } else {
+    session.push({ path, top });
+  }
+
+  sessionStorage.setItem(SESSION_SCROLL, JSON.stringify(session));
+};
+
+export const getSessionScroll = (path) => {
+  const session = JSON.parse(sessionStorage.getItem(SESSION_SCROLL)) || [];
+  const curr = session.find((v) => v.path === path);
+
+  if (curr) {
+    document.body.scrollTo({ top: curr.top });
+  }
 };

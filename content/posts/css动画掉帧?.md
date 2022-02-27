@@ -6,8 +6,8 @@ thumbnail: ../cover/wallhaven-l32e32.jpeg
 excerpt:
 slug:
 categories:
-  -
+  - 学习
 tags:
-  -
+  - css
 pwd:
 ---

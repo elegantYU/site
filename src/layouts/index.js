@@ -2,7 +2,8 @@ import React, { useEffect, useContext } from 'react';
 import Helmet from 'react-helmet';
 import config from '../../config/index';
 import ThemeContext, { ThemeProvider } from '../context/themeContext';
-import OverContext, { OverProvider } from '../context/overflowContext';
+import { OverProvider } from '../context/overflowContext';
+import { Toaster } from 'react-hot-toast';
 
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
@@ -48,6 +49,7 @@ const Layout = ({ children, ...rest }) => {
         <Navigation hide={rest?.noHead} routes={config.routes} />
         <main id='main'>{children}</main>
         <Footer hide={rest?.noFooter} />
+        <Toaster position='bottom-center' toastOptions={{ className: 'toast-my', duration: 2000 }} />
       </ThemeProvider>
     </OverProvider>
   );

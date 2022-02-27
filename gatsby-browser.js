@@ -1,13 +1,15 @@
 const { routes } = require('./config');
+const { setSessionScroll, getSessionScroll } = require('./src/utils');
 
-exports.onPreRouteUpdate = ({ location, prevLocation }) => {
+exports.onPreRouteUpdate = ({ location }) => {
   const clearList = routes.map((v) => v.path);
 
-  if (!clearList.includes(location?.pathname)) {
-    console.log('保存 scrolltop');
+  if (!clearList.includes(location.pathname)) {
+    setSessionScroll(location.pathname);
   }
   document.body.scrollTop = 0;
-  console.log('清除 scrolltop');
-  console.log('new', location.pathname);
-  console.log('old', prevLocation?.pathname);
+};
+
+exports.onRouteUpdate = ({ location }) => {
+  getSessionScroll(location?.pathname);
 };

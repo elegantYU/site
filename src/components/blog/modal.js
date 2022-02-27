@@ -1,21 +1,22 @@
 /*
  * @Date: 2022-02-18 17:34:53
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-23 20:14:12
+ * @LastEditTime: 2022-02-27 21:28:46
  * @Description: 模态框
  */
 import React, { useState, useRef, useEffect } from 'react';
-import { animated, useTransition, easings, config } from 'react-spring';
+import { animated, useTransition, config } from 'react-spring';
 import toast from 'react-hot-toast';
+import { STORAGE_TOKEN } from '../../utils/constant';
 import Btn from '../button';
 
 const arrowMap = {
-  ArrowUp: 's',
-  ArrowDown: 'x',
-  ArrowLeft: 'z',
-  ArrowRight: 'y',
+  ArrowUp: '↑',
+  ArrowDown: '↓',
+  ArrowLeft: '←',
+  ArrowRight: '→',
 };
-const key = 'ssxxzyzy';
+const passKey = '↑↑↓↓←→←→';
 
 const Modal = (props) => {
   const { pwd, visible, onCancel, onDone } = props;
@@ -50,7 +51,19 @@ const Modal = (props) => {
     }
   };
 
-  const handleKeydown = (e) => {};
+  const handleKeydown = (e) => {
+    const code = arrowMap[e.code] || e.code;
+    const temp = keyAction + code;
+
+    if (temp.includes(passKey)) {
+      toast('触发「远古密钥」，获得永久令牌');
+      localStorage.setItem(STORAGE_TOKEN, '奥利给!');
+      onDone?.();
+      onCancel?.();
+    }
+
+    setKeyAction(temp);
+  };
 
   const handleDone = () => {
     if (err) return;
@@ -99,21 +112,13 @@ const Modal = (props) => {
     document.body.addEventListener('keydown', handleEscListener);
     return () => {
       document.body.removeEventListener('keydown', handleEscListener);
+      handleClear();
     };
   }, []);
 
   useEffect(() => {
     recordErr();
   }, [errCount]);
-
-  useEffect(() => {
-    if (visible) {
-      inputEl?.current?.focus();
-    }
-    return () => {
-      handleClear();
-    };
-  }, [visible]);
 
   return rootTrans(
     (style, state) =>
@@ -127,7 +132,7 @@ const Modal = (props) => {
                   <div className='modal-header'>上了锁</div>
                   <div className='modal-body'>
                     <div className={`modal-body-input ${inputClass}`}>
-                      <input ref={inputEl} placeholder='输入密码' onKeyUp={handleKeyup} />
+                      <input ref={inputEl} placeholder='输入密码' onKeyUp={handleKeyup} onKeyDown={handleKeydown} />
                     </div>
                   </div>
                   <div className='modal-footer'>

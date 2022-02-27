@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { graphql, navigate } from 'gatsby';
-import { Toaster } from 'react-hot-toast';
 import { moveToView } from '../utils';
 
 import Seo from '../components/SEO';
@@ -109,7 +108,7 @@ const Article = ({ data }) => {
       </div>
     ));
 
-  const renderListJSX = (list) =>
+  const renderListJSX = () =>
     list.map((v, i) => (
       <BlogGrid data={v} key={v.id} style={{ animationDelay: `${i * 100}ms` }} showPwdModal={showPwdModal} />
     ));
@@ -146,7 +145,6 @@ const Article = ({ data }) => {
         )}
       </div>
       <Modal visible={isModalShow} onCancel={hidePwdModal} onDone={handleModalDone} pwd={currentInfo.pwd} />
-      <Toaster position='bottom-center' toastOptions={{ className: 'toast-my', duration: 2000 }} />
     </>
   );
 };
