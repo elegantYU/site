@@ -133,7 +133,14 @@ const Article = ({ data }) => {
         <div className='article-search'>
           <span className='article-search-glass iconfont icon-search'></span>
           <input ref={inputEl} placeholder='What You Want To Know...' onKeyUp={handleKeyUp} />
-          <span className={`article-search-close iconfont icon-close ${closeClass}`} onClick={handleSearchClean}></span>
+          <span
+            className={`article-search-close iconfont icon-close ${closeClass}`}
+            onClick={handleSearchClean}
+            onKeyDown={handleSearchClean}
+            role='button'
+            tabIndex='0'
+            aria-label='clear input'
+          ></span>
         </div>
         <div className='article-categories'>{renderCategoriesJSX()}</div>
         {list.length ? (

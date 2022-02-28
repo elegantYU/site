@@ -25,6 +25,19 @@ $comfort-margin: 40px;
   padding: 60px $comfort-margin $comfort-margin;
   background-color: var(--modal-bg);
   border-radius: $border-radius-max;
+
+  &.up {
+    animation: upup 200ms ease forwards;
+  }
+  &.down {
+    animation: downdown 200ms ease forwards;
+  }
+  &.left {
+    animation: leftleft 200ms ease forwards;
+  }
+  &.right {
+    animation: rightright 200ms ease forwards;
+  }
 }
 
 .modal-header {
@@ -97,20 +110,57 @@ $comfort-margin: 40px;
   90% {
     transform: translate3d(-1px, 0, 0);
   }
-
   20%,
   80% {
     transform: translate3d(2px, 0, 0);
   }
-
   30%,
   50%,
   70% {
     transform: translate3d(-4px, 0, 0);
   }
-
   40%,
   60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes upup {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes downdown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes leftleft {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes rightright {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
   }
 }

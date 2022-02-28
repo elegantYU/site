@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-02-18 17:34:53
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-27 21:28:46
+ * @LastEditTime: 2022-02-28 20:02:23
  * @Description: 模态框
  */
 import React, { useState, useRef, useEffect } from 'react';
@@ -11,21 +11,22 @@ import { STORAGE_TOKEN } from '../../utils/constant';
 import Btn from '../button';
 
 const arrowMap = {
-  ArrowUp: '↑',
-  ArrowDown: '↓',
-  ArrowLeft: '←',
-  ArrowRight: '→',
+  ArrowUp: { text: '↑', cls: 'up' },
+  ArrowDown: { text: '↓', cls: 'down' },
+  ArrowLeft: { text: '←', cls: 'left' },
+  ArrowRight: { text: '→', cls: 'right' },
 };
 const passKey = '↑↑↓↓←→←→';
 
 const Modal = (props) => {
   const { pwd, visible, onCancel, onDone } = props;
-  const [keywords, setKeywords] = useState('');
+  const [isFocus, setFocus] = useState(false);
   const [err, setErr] = useState(false);
   const [errCount, setErrCount] = useState(0);
   const [keyAction, setKeyAction] = useState('');
+  const [modalCls, setModalCls] = useState('');
   const inputEl = useRef(null);
-  const inputClass = `${keywords ? 'active' : ''} ${err ? 'error' : ''}`;
+  const inputClass = `${isFocus ? 'active' : ''} ${err ? 'error' : ''}`;
 
   const rootTrans = useTransition(visible, {
     from: { opacity: 0 },
@@ -35,31 +36,34 @@ const Modal = (props) => {
     exitBeforeEnter: true,
   });
   const modalTrans = useTransition(visible, {
-    from: { opacity: 0, translateY: -30 },
+    from: { opacity: 0, translateY: -20 },
     enter: { opacity: 1, translateY: 0 },
-    leave: { opacity: 0, translateY: -30 },
+    leave: { opacity: 0, translateY: 20 },
     config: { duration: 300, ...config.stiff },
     exitBeforeEnter: true,
   });
 
-  const handleKeyup = (e) => {
-    const { value } = inputEl.current;
-    setKeywords(value);
-
-    if (e.code === 'Enter') {
-      handleDone();
-    }
-  };
+  const handleFocus = () => setFocus(true);
+  const handleBlur = () => setFocus(false);
 
   const handleKeydown = (e) => {
-    const code = arrowMap[e.code] || e.code;
+    const code = arrowMap[e.code]?.text || e.code;
     const temp = keyAction + code;
 
+    if (arrowMap[e.code]) {
+      shakeOnce(arrowMap[e.code].cls);
+    }
+
     if (temp.includes(passKey)) {
-      toast('触发「远古密钥」，获得永久令牌');
+      toast('触发「远古密令」，获得永久令牌');
       localStorage.setItem(STORAGE_TOKEN, '奥利给!');
       onDone?.();
       onCancel?.();
+      return;
+    }
+
+    if (code === 'Enter') {
+      handleDone();
     }
 
     setKeyAction(temp);
@@ -67,7 +71,7 @@ const Modal = (props) => {
 
   const handleDone = () => {
     if (err) return;
-    if (keywords == pwd) {
+    if (inputEl.current.value === pwd) {
       onDone?.();
       onCancel?.();
       return;
@@ -80,7 +84,6 @@ const Modal = (props) => {
 
   const handleClear = () => {
     setErrCount(0);
-    setKeywords('');
     setKeyAction('');
     if (inputEl?.current?.value) {
       inputEl.current.value = '';
@@ -88,9 +91,14 @@ const Modal = (props) => {
   };
 
   const handleEscListener = (e) => {
-    if (e.code == 'Escape') {
+    if (e.code === 'Escape') {
       onCancel?.();
     }
+  };
+
+  const shakeOnce = (cls) => {
+    setModalCls(cls);
+    setTimeout(() => setModalCls(''), 200);
   };
 
   const recordErr = () => {
@@ -128,11 +136,17 @@ const Modal = (props) => {
           {modalTrans(
             (styles, state) =>
               state && (
-                <animated.div className='modal-box' style={styles}>
+                <animated.div className={`modal-box ${modalCls}`} style={styles}>
                   <div className='modal-header'>上了锁</div>
                   <div className='modal-body'>
                     <div className={`modal-body-input ${inputClass}`}>
-                      <input ref={inputEl} placeholder='输入密码' onKeyUp={handleKeyup} onKeyDown={handleKeydown} />
+                      <input
+                        ref={inputEl}
+                        placeholder='输入密码'
+                        onKeyDown={handleKeydown}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                      />
                     </div>
                   </div>
                   <div className='modal-footer'>

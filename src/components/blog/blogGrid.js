@@ -10,7 +10,6 @@ const BlogGrid = ({ data, style, showPwdModal }) => {
       pwd,
       date,
       categories,
-      excerpt,
       thumbnail: { childImageSharp },
     },
     fields: { slug },
@@ -26,12 +25,12 @@ const BlogGrid = ({ data, style, showPwdModal }) => {
 
   return (
     <div className='blog-grid' style={style}>
-      <div className='blog-grid-cover' onClick={beforeNavigate}>
+      <div className='blog-grid-cover' onClick={beforeNavigate} onKeyDown={beforeNavigate} role='link' tabIndex='0'>
         <GatsbyImage image={childImageSharp.gatsbyImageData} alt='' />
       </div>
 
       <div className='blog-grid-detail'>
-        <div className='blog-grid-title' onClick={beforeNavigate}>
+        <div className='blog-grid-title' onClick={beforeNavigate} onKeyDown={beforeNavigate} role='link' tabIndex='0'>
           {title}
         </div>
         <div className='blog-grid-desc'>
