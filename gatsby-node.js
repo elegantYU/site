@@ -1,6 +1,6 @@
 require('dotenv').config();
 const path = require('path');
-const moment = require('moment');
+const dayjs = require('dayjs');
 const kebabCase = require('lodash.kebabcase');
 const { GitalkPluginHelper } = require('gatsby-plugin-gitalk');
 const config = require('./config');
@@ -9,8 +9,8 @@ const postNodes = [];
 
 const addSiblingNodes = (createNodeField) => {
   postNodes.sort(({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
-    const dateA = moment(date1, 'YYYY-MM-DD');
-    const dateB = moment(date2, 'YYYY-MM-DD');
+    const dateA = dayjs(date1, 'YYYY-MM-DD');
+    const dateB = dayjs(date2, 'YYYY-MM-DD');
 
     if (dateA.isBefore(dateB)) return 1;
     if (dateB.isBefore(dateA)) return -1;

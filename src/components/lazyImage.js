@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-01-21 11:11:06
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-01-21 16:17:28
+ * @LastEditTime: 2022-03-01 14:19:25
  * @Description: 懒加载的图片啊
  */
 import React from 'react';
@@ -18,7 +18,7 @@ const LazyImage = ({ src, alt, className }) => {
 
   return (
     <div className='lazy-box' style={style}>
-      <img className='l-fake' src='' onError={onload} />
+      <img className='l-fake' src='' onError={onload} alt='' />
       <img className={cName} ref={imgEl} data-src={src} alt={alt} />
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import OverContext from '../context/overflowContext';
 
 import Seo from '../components/SEO';
+import MusicBox from '../components/music/musicBox';
 import SongItem from '../components/music/songItem';
 import { getMusicListXHR, getArtistInfoXHR } from '../api/music';
 
@@ -31,7 +32,7 @@ const Music = () => {
     <>
       <Seo />
       <div id='music'>
-        <div className='music-box'></div>
+        <MusicBox />
         <section className='list-wrap'>
           <section className='music-list'>{renderItemJSX()}</section>
         </section>

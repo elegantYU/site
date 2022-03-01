@@ -1,12 +1,68 @@
 #music {
-  max-width: $large;
   height: 100%;
   margin: 0 auto;
+  padding: 0 5vw;
+
+  @extend %flex-center;
+
+  gap: 5vw;
+  align-items: flex-start;
+}
+
+.music-box {
+  $w: 360px;
+  $l: 60px;
+  padding: $l;
+  position: relative;
+
+  &-banner {
+    max-width: $w;
+    max-height: $w;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(180deg, transparent 50%, rgba(255, 255, 255, 0.4) 100%);
+      z-index: 1;
+    }
+
+    &:hover {
+      box-shadow: 0 7px 20px -6px rgb(0 0 0 / 30%);
+      transform: translateY(-10px);
+    }
+  }
+
+  &-detail {
+    position: absolute;
+    bottom: 0;
+    left: $l;
+    width: $w;
+
+    &-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #000;
+    }
+    &-desc {
+      font-size: 1.2rem;
+      color: #000;
+    }
+  }
 }
 
 .list-wrap {
   height: 100%;
   overflow: auto;
+  flex: 1;
 }
 .music-list {
   padding: 0 20px;
@@ -23,6 +79,8 @@
   gap: 20px;
   cursor: pointer;
   filter: opacity(0.75);
+  overflow: hidden;
+  transition: all 0.3s ease;
 
   &:hover,
   &.active {

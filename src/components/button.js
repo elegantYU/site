@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-02-19 22:41:38
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-24 23:07:44
+ * @LastEditTime: 2022-03-01 14:20:01
  * @Description: 波纹疾走
  */
 import React, { useState, useRef } from 'react';
@@ -29,6 +29,7 @@ const Btn = (props) => {
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
       onMouseOut={handleMouseUp}
+      onBlur={handleMouseUp}
     >
       <Ripple data={rippleData} active={isStart} />
       {children}

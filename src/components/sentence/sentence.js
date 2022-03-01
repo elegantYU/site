@@ -1,9 +1,9 @@
 import React from 'react';
-import moment from 'moment/min/moment.min';
+import dayjs from 'dayjs';
 
 const Sentence = ({ data, style }) => {
   const { title, content, createTime } = data;
-  const date = moment(createTime).format('Y/M/D HH:mm');
+  const date = dayjs(createTime).format('Y/M/D HH:mm');
 
   return (
     <section className='sentence-box' style={style}>

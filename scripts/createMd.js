@@ -1,12 +1,12 @@
 /*
  * @Date: 2022-02-12 18:18:09
  * @LastEditors: elegantYu
- * @LastEditTime: 2022-02-13 00:29:03
+ * @LastEditTime: 2022-03-01 14:15:50
  * @Description: 创建有模板的 md 文件
  */
 const fs = require('fs');
 const path = require('path');
-const moment = require('moment/min/moment.min');
+const dayjs = require('dayjs');
 const chalk = require('chalk');
 
 const TEMPLATE = path.resolve(__dirname, '../template/post.md');
@@ -25,7 +25,7 @@ const replaceText = (text, oWords = [], rWords = []) =>
 
 try {
   const data = fs.readFileSync(TEMPLATE, 'utf8');
-  const nowDate = moment().format('YYYY-MM-DD HH:mm:SS');
+  const nowDate = dayjs().format('YYYY-MM-DD HH:mm:SS');
   const content = replaceText(data, ['title', 'date'], [argTitle, nowDate]);
   fs.writeFileSync(path.join(OUTPATH, `${argTitle}.md`), content);
   console.log(chalk.green('已创建新文章'), argTitle);
