@@ -31,7 +31,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(180deg, transparent 50%, rgba(255, 255, 255, 0.4) 100%);
+      background-image: radial-gradient(transparent 50%, rgba(255, 255, 255, 0.4) 100%);
       z-index: 1;
     }
 
@@ -55,6 +55,80 @@
     &-desc {
       font-size: 1.2rem;
       color: #000;
+    }
+  }
+}
+
+$bar-width: 4px;
+$bar-height: 20px;
+
+@mixin calcBounceAnimate($dur: 0.5s, $delay: 0s, $h: $bar-height) {
+  animation: bounceBottom $dur ease-in-out $delay infinite;
+
+  @keyframes bounceBottom {
+    0%,
+    100% {
+      height: $h;
+    }
+    50% {
+      height: $bar-height;
+    }
+  }
+}
+
+.music-play-outer {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-large;
+  backdrop-filter: blur(10px);
+  z-index: 1;
+
+  %bar {
+    width: $bar-width;
+    height: $bar-height;
+    background-color: #fff;
+    border-radius: $border-radius-lite;
+  }
+
+  span {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    @extend %bar;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      @extend %bar;
+      bottom: 0;
+    }
+
+    &::before {
+      height: $bar-height - 5px;
+      left: -1 * ($bar-width + calc($bar-width / 2));
+    }
+    &::after {
+      height: $bar-height - 10px;
+      left: $bar-width + calc($bar-width / 2);
+    }
+  }
+
+  &.active,
+  &:hover {
+    span {
+      @include calcBounceAnimate(0.6s, 0s);
+
+      &::before {
+        @include calcBounceAnimate(0.6s, 0.1s, $bar-height - 5px);
+      }
+      &::after {
+        @include calcBounceAnimate(0.6s, 0.15s, $bar-height - 10px);
+      }
     }
   }
 }
