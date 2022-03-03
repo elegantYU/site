@@ -1,29 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
 import OverContext from '../context/overflowContext';
+import AudioContext from '../context/audioContext';
 
 import Seo from '../components/SEO';
 import MusicBox from '../components/music/musicBox';
 import SongItem from '../components/music/songItem';
-import { getMusicListXHR, getArtistInfoXHR } from '../api/music';
+import { getArtistInfoXHR } from '../api/music';
 
 const Music = () => {
   const { toggleFull } = useContext(OverContext);
-  const [musicParams, setMusicParams] = useState({ page: 1, size: 20 });
-  const [list, setList] = useState([]);
-  const [currentSong, setCurrentSong] = useState(null);
-
-  const init = async () => {
-    const {
-      data: { data },
-    } = await getMusicListXHR(musicParams);
-    setList(data);
-    console.log('data', data);
-  };
+  const { list, shuffleList } = useContext(AudioContext);
 
   const renderItemJSX = () => list.map((d, i) => <SongItem data={d} key={i} />);
 
   useEffect(() => {
-    init();
     toggleFull(true);
     return () => toggleFull(false);
   }, []);
@@ -36,6 +26,7 @@ const Music = () => {
         <section className='list-wrap'>
           <section className='music-list'>{renderItemJSX()}</section>
         </section>
+        <button onClick={shuffleList}>随机</button>
       </div>
     </>
   );

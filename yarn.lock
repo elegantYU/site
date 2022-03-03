@@ -7973,6 +7973,11 @@ lodash.reject@^4.4.0:
   resolved "https://registry.npmjs.org/lodash.reject/-/lodash.reject-4.6.0.tgz"
   integrity sha1-gNZJLcFHCGS79YNTO2UfQqn1JBU=
 
+lodash.shuffle@^4.2.0:
+  version "4.2.0"
+  resolved "http://registry.npm.release.ctripcorp.com/lodash.shuffle/download/lodash.shuffle-4.2.0.tgz#145b5053cf875f6f5c2a33f48b6e9948c6ec7b4b"
+  integrity sha1-FFtQU8+HX29cKjP0i26ZSMbse0s=
+
 lodash.some@^4.4.0:
   version "4.6.0"
   resolved "https://registry.npmjs.org/lodash.some/-/lodash.some-4.6.0.tgz"
